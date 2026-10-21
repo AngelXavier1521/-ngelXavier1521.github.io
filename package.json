@@ -1,0 +1,18 @@
+{
+  "name": "linea-del-tiempo-teschi",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio remotion/index.ts",
+    "render": "remotion render remotion/index.ts LineaDelTiempo out/linea-del-tiempo.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.537",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.537"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}
