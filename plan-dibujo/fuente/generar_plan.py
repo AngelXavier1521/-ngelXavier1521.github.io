@@ -343,21 +343,21 @@ def on_cover(canv, doc):
     # textos
     canv.setFillColor(MUTED)
     canv.setFont("Body-Bold", 10)
-    canv.drawString(2.2 * cm, H - 3.0 * cm, "PLAN PERSONAL DE DIBUJO  ·  VERSIÓN 1.0  ·  NOVIEMBRE 2026")
+    canv.drawString(2.2 * cm, H - 3.0 * cm, "PLAN PERSONAL DE DIBUJO  ·  VERSIÓN 2.0 (DÍA POR DÍA)  ·  NOVIEMBRE 2026")
     canv.setFillColor(INK)
     canv.setFont("Serif-Bold", 38)
     canv.drawString(2.2 * cm, H - 5.0 * cm, "Aprender a dibujar")
     canv.drawString(2.2 * cm, H - 6.5 * cm, "desde cero")
     canv.setFont("Body", 14)
     canv.setFillColor(INK)
-    canv.drawString(2.2 * cm, H - 7.9 * cm, "26 semanas para pasar de copiar con cuadrícula")
+    canv.drawString(2.2 * cm, H - 7.9 * cm, "135 sesiones (26 semanas + semana 0) para pasar de copiar con cuadrícula")
     canv.drawString(2.2 * cm, H - 8.6 * cm, "a construir tus propios personajes en perspectiva")
     canv.setFont("Body", 10.5)
     canv.setFillColor(MUTED)
     lines = [
         "1–2 horas al día  ·  pensado para practicar sin internet",
         "Basado en investigación sobre dibujo y aprendizaje, marcando qué es evidencia y qué es opinión",
-        "Incluye: temario semanal, materiales, sesiones con descansos, recursos descargables,",
+        "Incluye: qué hacer cada día, materiales, sesiones con descansos, recursos descargables,",
         "hojas de diagnóstico y bitácora para imprimir",
     ]
     for i, ln in enumerate(lines):
@@ -407,7 +407,8 @@ story = [NextPageTemplate("normal"), PageBreak()]  # la portada se dibuja en la 
 # ---- Cómo usar
 story.append(P("Cómo usar este documento", sH1))
 story += bullets([
-    "<b>Léelo completo una vez</b> (unos 40 minutos). Después solo vas a necesitar la página de la semana en la que vas.",
+    "<b>Léelo completo una vez</b> (unos 40 minutos). Después solo vas a necesitar la tabla de la semana en la que vas (sección 7): ahí dice qué hacer cada día.",
+    "<b>Los días son sesiones, no fechas del calendario.</b> Si un día no puedes dibujar, no pierdes nada: la próxima vez haces el día que sigue.",
     "<b>Imprime los anexos</b> (hoja de diagnóstico y bitácora) o cópialos a mano en tu cuaderno.",
     "<b>El día que tengas internet</b>: revisa conmigo tus dibujos de la semana y descarga lo de la semana siguiente (lista en la sección 4).",
     "<b>Cada semana tiene una «Pregunta para ti».</b> No te doy la respuesta a propósito: la tienes que descubrir dibujando. Tráeme tu respuesta cuando revisemos.",
@@ -507,12 +508,18 @@ story.append(grid_table([
     ["Goma blanca y goma moldeable", "Borrar o aclarar la construcción.", "$40–90"],
     ["Sacapuntas", "—", "$10–30"],
     ["Tabla con clip, tamaño carta", "Superficie firme para dibujar en el trabajo. Mejor si la puedes inclinar.", "$40–80"],
-    ["Regla de 30 cm", "<b>Solo</b> para comprobar puntos de fuga en fotos y en tus dibujos. No para trazar los ejercicios.", "$15–30"],
+    ["Regla de 30 cm", "Para dibujar cuadrículas en tu hoja (fase 1) y comprobar puntos de fuga (fase 2). No para trazar los ejercicios.", "$15–30"],
+    ["3 micas o acetatos transparentes", "Tus cuadrículas portátiles (ver abajo).", "$15–40"],
     ["Folder o carpeta", "Guardar todo con fecha: es tu evidencia de progreso.", "$20–40"],
-    ["<b>Total aproximado</b>", "", "<b>$355–790</b>"],
+    ["<b>Total aproximado</b>", "", "<b>$370–830</b>"],
 ], [6.2 * cm, 8.4 * cm, 3.2 * cm]))
 story.append(P("Los precios son orientativos (papelería en México, 2026). Verifícalos; no tengo precios en tiempo real.", sSmallMuted))
 story.append(Spacer(1, 6))
+story.append(callout("Micas: tu cuadrícula sin internet", [
+    "Recorta 3 micas del tamaño de la pantalla de tu celular. Con plumón permanente y regla, dibuja en una una cuadrícula de 4×4, en otra una de 2×2, y en la última solo una cruz al centro. "
+    "Pon la mica sobre la foto en la pantalla (sin cambiar el zoom mientras copias) y dibuja en tu hoja la misma cuadrícula, muy suave, en un rectángulo con la misma proporción que la foto. "
+    "Así vas quitando la cuadrícula poco a poco en la fase 1.",
+], color=PHASE[1], bg=PHASE_TINT[1]))
 story.append(P("<b>Ya tienes:</b> celular (referencias, temporizador, cámara y «espejo» con la cámara frontal), tu propia mano y tu cara como modelos."))
 story.append(P("No lo compres todavía", sH2))
 story += bullets([
@@ -598,8 +605,8 @@ story.append(Spacer(1, 4))
 story.append(grid_table([
     ["Parte", "Qué haces"],
     ["<b>Calentar</b>", "Líneas «fantasma» (ensayas el movimiento en el aire y luego trazas), elipses, cajas rápidas. No es para dibujar bonito: es para soltar el brazo."],
-    ["<b>Bloque de tema</b>", "El ejercicio de la semana (sección 7). Si hay algo que leer o ver, que sean los primeros 10 minutos de este bloque o el día con internet."],
-    ["<b>Repaso mezclado</b>", "Ejercicios de fases anteriores, mezclados (principios 4 y 5). La tabla de abajo dice qué repasar en cada fase."],
+    ["<b>Bloques 1 y 2</b>", "El tema de la semana. El Bloque 2 solo existe en los días de 2 horas. La teoría se ve el día con internet, no aquí."],
+    ["<b>Repaso mezclado</b>", "Ejercicios de semanas o fases anteriores, mezclados (principios 4 y 5)."],
     ["<b>Cierre</b>", "Sin ver nada, dibuja de memoria lo que estudiaste hoy (principio 6). Después compáralo con la referencia y llena la bitácora: 3 líneas."],
 ], [3.4 * cm, 14.4 * cm], zebra=False))
 story.append(Spacer(1, 6))
@@ -609,19 +616,11 @@ story.append(callout("Reglas de las pausas", [
     ("b", "<b>Si después de la pausa larga sigues agotado,</b> salta directo al cierre de memoria y termina. Un día corto también cuenta."),
     ("b", "<b>Día pesado, mínimo de 15 minutos:</b> 5 de calentamiento, 7 de un ejercicio de la semana y 3 de un dibujo de memoria. Es para no romper el hábito."),
 ], color=PHASE[2], bg=PHASE_TINT[2]))
-story.append(P("Qué repasar en el bloque mezclado", sH3))
-story.append(grid_table([
-    ["Si estás en…", "Repasa (mezclado, sin seguir siempre el mismo orden)"],
-    ["Fase 1", "Ejercicios de la semana anterior alternados con los de esta."],
-    ["Fase 2", "1 copia sin cuadrícula (15 min) + medir un objeto real (5–10 min)."],
-    ["Fase 3", "8–10 cajas o cilindros (10 min) + 1 copia sin cuadrícula (15 min)."],
-    ["Fase 4", "3 cabezas en ángulos distintos (15 min) + 5 cajas (10 min)."],
-    ["Fase 5", "10 gestos (10 min) + 2 manos (8 min) + 2 cabezas (7 min)."],
-], [3.4 * cm, 14.4 * cm]))
 story.append(P("Una semana tipo", sH3))
 story.append(P(
-    "<b>5 días de práctica</b> (1–2 h) + <b>1 día con internet</b> (revisión conmigo, descargas, ver teoría) + <b>1 día libre</b>. "
-    "Meta: 7–10 horas por semana. Si el día con internet también puedes dibujar, haz una sesión normal y después la revisión."))
+    "<b>5 sesiones de práctica</b> (1–2 h) + <b>1 día con internet</b> (revisión conmigo, descargas, un poco de teoría) + <b>1 día libre</b>. "
+    "Meta: 7–10 horas por semana. Lo que haces en cada bloque, día por día, está en las tablas de la sección 7. "
+    "Si el día con internet también puedes dibujar, haz la siguiente sesión y después la revisión."))
 
 # ---- 6. Diagnóstico
 story.append(CondPageBreak(14 * cm))
@@ -647,93 +646,115 @@ story.append(callout("Prueba de superposición (la usarás todo el plan)", [
 ], color=PHASE[1], bg=PHASE_TINT[1]))
 story.append(P(
     "Los mismos 6 dibujos se repiten en las <b>semanas 4, 9, 15, 22 y 26</b>. Mándame las fotos de la semana 0 y te respondo con preguntas, no con correcciones."))
+story.append(CondPageBreak(11 * cm))
+story.append(P("La semana 0, día por día", sH2))
+story.append(P("Los 6 dibujos <b>no van en un solo día</b>: se reparten en los días 1 y 2. Los días 3 a 5 te enseñan la estructura de las sesiones y preparan la fase 1."))
+from plan_diario import SEMANA_0
+story.append(grid_table([["Día", "Qué haces", "Tiempo"]] + [list(r) for r in SEMANA_0],
+                        [2.6 * cm, 13.0 * cm, 2.2 * cm], head_color=PHASE[0]))
 
 # ---- 7. Temario
 story.append(PageBreak())
-story.append(P("7. El temario, semana por semana", sH1))
+story.append(P("7. El plan, día por día", sH1))
 story.append(roadmap_diagram())
 story.append(Spacer(1, 6))
-story.append(P(
-    "Cada fila es una semana. La columna <b>Estudia</b> es lo poco que lees o ves (máximo 20 % del tiempo). <b>Practica</b> es lo que haces en los bloques de tema. "
-    "La <b>Pregunta para ti</b> es para que la respondas tú dibujando; no viene con respuesta a propósito."))
-story.append(P(
-    "<b>Si una semana no te sale, repítela.</b> Hacer el plan en 30 semanas en vez de 26 está bien. "
-    "Saltarte el criterio para pasar de fase no está bien, porque cada fase se apoya en la anterior."))
+story.append(callout("Cómo leer las tablas", [
+    ("b", "<b>«Día 1» no es lunes:</b> es tu primera sesión de práctica de esa semana. Si un día no puedes dibujar, no te saltas nada: la próxima vez haces el día que sigue. Cada semana son 5 sesiones, aunque te tome 6, 7 u 8 días del calendario."),
+    ("b", "<b>Si tienes 1 hora:</b> calentamiento (5 min) + <b>Bloque 1</b> (25) + pausa (5) + <b>Repaso</b> (20) + <b>Cierre</b> (5)."),
+    ("b", "<b>Si tienes 2 horas:</b> calentamiento (10) + <b>Bloque 1</b> (25) + pausa (5) + <b>Bloque 2</b> (25) + pausa larga (15) + <b>Repaso</b> (25) + pausa (5) + <b>Cierre</b> (10)."),
+    ("b", "<b>Cierre:</b> dibuja de memoria lo que dice la columna, compáralo con la referencia o el objeto real y llena la bitácora (3 líneas)."),
+    ("b", "<b>«Antes de esta semana»</b> es lo que haces el día con internet: estudiar un poco y dejar listas las fotos. Ese mismo día mándame 3 a 5 dibujos de la semana que terminaste."),
+    ("b", "<b>Si un ejercicio no te sale, repítelo al día siguiente</b> en vez de avanzar. Terminar el plan en 30 semanas en lugar de 26 está bien. Saltarte el criterio para pasar de fase no está bien, porque cada fase se apoya en la anterior."),
+], color=INK))
 
-W_COLS = [1.15 * cm, 4.05 * cm, 7.4 * cm, 5.2 * cm]
+from plan_diario import SEMANAS, FASES, DIAG, DIAG_TEXTO
+
+D_COLS = [1.0 * cm, 4.9 * cm, 4.4 * cm, 3.9 * cm, 3.6 * cm]
+sDayHead = S("dayhead", fontName="Body-Bold", fontSize=8.2, leading=10.2, textColor=colors.white, spaceAfter=0)
+sDay = S("day", fontSize=8.3, leading=10.9, spaceAfter=0)
+sWeekLine = S("weekline", fontSize=8.8, leading=11.8, spaceAfter=3)
 
 
-def week_table(phase, rows):
-    data = [["Sem.", "Estudia", "Practica", "Pregunta para ti"]]
-    for r in rows:
-        data.append([f"<b>{r[0]}</b>", r[1], r[2], f"<i>{r[3]}</i>"])
-    t = grid_table(data, W_COLS, head_color=PHASE[phase], zebra=False)
+def day_table(phase, dias):
+    head = [Paragraph(t, sDayHead) for t in (
+        "Día", "Bloque 1 · 25 min", "Bloque 2 · 25 min<br/>(solo si tienes 2 h)",
+        "Repaso · 20–25 min", "Cierre · de memoria")]
+    data = [head]
+    spans = []
+    for i, d in enumerate(dias, 1):
+        if d == DIAG:
+            data.append([Paragraph(f"<b>{i}</b>", sDay), Paragraph(DIAG_TEXTO, sDay), "", "", ""])
+            spans.append(("SPAN", (1, i), (4, i)))
+            spans.append(("BACKGROUND", (1, i), (4, i), colors.HexColor("#FBEDE8")))
+        else:
+            data.append([Paragraph(f"<b>{i}</b>", sDay)] + [Paragraph(x, sDay) for x in d])
+    t = Table(data, colWidths=D_COLS, repeatRows=1)
     t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("BACKGROUND", (0, 0), (-1, 0), PHASE[phase]),
         ("BACKGROUND", (0, 1), (0, -1), PHASE_TINT[phase]),
-        ("BACKGROUND", (3, 1), (3, -1), PHASE_TINT[phase]),
-    ]))
+        ("BACKGROUND", (2, 1), (2, -1), colors.HexColor("#FAFAF7")),
+        ("LEFTPADDING", (0, 0), (-1, -1), 4),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 3),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LINEBELOW", (0, 0), (-1, -1), 0.4, RULE),
+        ("LINEBEFORE", (1, 1), (-1, -1), 0.3, RULE),
+    ] + spans))
     return t
 
 
-def phase_block(num, title, weeks, goal, why, rows, photos, criterion, extra=None):
-    out = [CondPageBreak(6 * cm), PhaseHeader(num, title, weeks), Spacer(1, 6),
+def week_block(phase, num):
+    w = SEMANAS[num]
+    band = Table([[Paragraph(f'<font color="white"><b>SEMANA {num}</b> · {w["titulo"]}</font>',
+                             S("wb", fontSize=10, leading=13, spaceAfter=0))]], colWidths=[W_FULL])
+    band.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), PHASE[phase]),
+        ("LEFTPADDING", (0, 0), (-1, -1), 7), ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+    ]))
+    info = Table([[Paragraph(f"<b>Antes de esta semana (día con internet):</b> {w['antes']}", sWeekLine)],
+                  [Paragraph(f"<b>Pregunta para ti:</b> <i>{w['pregunta']}</i>", sWeekLine)]],
+                 colWidths=[W_FULL])
+    info.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), PHASE_TINT[phase]),
+        ("LEFTPADDING", (0, 0), (-1, -1), 7), ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+        ("TOPPADDING", (0, 0), (-1, -1), 3), ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+    ]))
+    return KeepTogether([band, info, day_table(phase, w["dias"]), Spacer(1, 12)])
+
+
+def phase_block(num, title, goal, why, photos, criterion, extra=None):
+    a, b = FASES[num]["semanas"]
+    out = [CondPageBreak(9 * cm), PhaseHeader(num, title, f"SEMANAS {a}–{b}"), Spacer(1, 6),
            P(f"<b>Meta:</b> {goal}"), P(f"<b>Por qué va aquí:</b> {why}")]
     if extra:
         out += extra
-    out.append(week_table(num, rows))
-    out.append(Spacer(1, 6))
-    out.append(callout("Fotos que tienes que tomar en esta fase", [photos], color=PHASE[num], bg=PHASE_TINT[num]))
-    out.append(callout("Criterio para pasar a la siguiente fase", [criterion], color=PHASE[num], bg=colors.white))
+    out.append(callout("En todas las sesiones de esta fase", [
+        f"<b>Calentamiento:</b> {FASES[num]['calentamiento']}",
+        f"<b>Repaso:</b> {FASES[num]['repaso_regla']}",
+        f"<b>Fotos que vas a necesitar:</b> {photos}",
+    ], color=PHASE[num], bg=PHASE_TINT[num]))
+    for wk in range(a, b + 1):
+        out.append(week_block(num, wk))
+    out.append(callout(f"Criterio para terminar la fase {num}", [criterion], color=PHASE[num], bg=colors.white))
     return out
 
 
-# Fase 1
 story += phase_block(
-    1, "Ver y medir", "SEMANAS 1–4",
+    1, "Ver y medir",
     "copiar sin cuadrícula con proporciones creíbles y, sobre todo, <b>detectar tus propios errores</b>.",
     "es la fuente principal de errores (principio 1) y todo lo demás depende de saber comparar tamaños y ángulos.",
-    [
-        ["1", "Drawabox, Lecciones 0 y 1 (líneas, líneas «fantasma», elipses). Speed, cap. III «Vision».",
-         "Calentamiento de líneas fantasma todos los días. Elipses dentro de cuadros. Con el lápiz y el brazo estirado, mide objetos de tu escritorio: ¿cuántas veces cabe el ancho en el alto? Copia 2 fotos de objetos sencillos con cuadrícula de 4×4.",
-         "Cuando una línea te sale torcida en la copia, ¿la viste mal o la trazaste mal? ¿Cómo podrías comprobar cuál de las dos fue?"],
-        ["2", "Medición comparativa y ángulos: Speed, cap. IV «Line Drawing». Si lo consigues, Dodson, <i>Keys to Drawing</i>.",
-         "Líneas de plomada: verticales y horizontales imaginarias para alinear puntos. Espacio negativo: dibuja la forma del hueco entre objetos (patas de una silla, entre brazo y torso). Contorno ciego (5 min) y contorno modificado. Copias con cuadrícula de 2×2.",
-         "¿Por qué dibujar el hueco entre las patas de una silla podría salirte más preciso que dibujar las patas?"],
-        ["3", "La «envolvente»: encerrar la forma en pocas líneas rectas antes de cualquier detalle. De lo general a lo particular.",
-         "Copia dibujos de maestros (Met, Rijksmuseum) solo con una cruz central. Triangula: cada punto nuevo se ubica por su relación con dos puntos que ya pusiste. Haz la prueba de superposición en cada copia.",
-         "Después de 3 superposiciones, ¿tus errores siguen un patrón? (¿Siempre alargas? ¿Siempre agrandas la cabeza?)"],
-        ["4", "— (semana de práctica pura)",
-         "Sin cuadrícula. Objetos reales de tu trabajo, no fotos: pasar de 3D real al papel es más difícil y más útil. Repite el dibujo #5 del diagnóstico. <b>Diagnóstico parcial completo.</b>",
-         "¿Qué cambió entre tu copia de la semana 0 y la de hoy? Escríbelo en una frase antes de mandármela."],
-    ],
-    "Objetos de tu entorno con luz de un solo lado (ventana o lámpara), cada uno desde 3 ángulos. Sillas, botellas, herramientas, tu mochila.",
+    "objetos de tu entorno con luz de un solo lado (ventana o lámpara), cada uno desde 3 ángulos: sillas, botellas, herramientas, tu mochila.",
     "Copias sin cuadrícula en las que la superposición muestra errores que <b>tú ya habías anotado antes de comparar</b>. Si todavía no, repite las semanas 3 y 4.",
     extra=[grid_removal_diagram(), Spacer(1, 4)],
 )
 
-# Fase 2
 story += phase_block(
-    2, "Volumen y perspectiva", "SEMANAS 5–9",
+    2, "Volumen y perspectiva",
     "pensar en volúmenes, encontrar puntos de fuga en fotos y dibujar cajas y cilindros convincentes en cualquier ángulo.",
     "aquí es donde se entrena «ver en 3D» (principio 3). La cabeza y el cuerpo son cajas, esferas y cilindros en perspectiva: sin esta fase, las siguientes no se sostienen.",
-    [
-        ["5", "Norling, <i>Perspective Made Easy</i>: primeros capítulos (horizonte, 1 punto). Drawabox, Lección 1: sección de cajas.",
-         "En 10 fotos de pasillos o calles encuentra con regla el horizonte y el punto de fuga. Cajas en 1 punto arriba, abajo y a los lados del horizonte. Tu cuarto en 1 punto.",
-         "¿Por qué una caja debajo del horizonte te deja ver su cara de arriba, y una que está arriba del horizonte no?"],
-        ["6", "Norling: 2 puntos. Drawabox: «rotated boxes».",
-         "10 fotos con 2 puntos (esquinas de edificios, muebles). Cajas en 2 puntos. Empieza el 250 Box Challenge: 8–10 cajas al día, dibujando «a través» (también las aristas de atrás). Comprueba cada caja prolongando sus aristas con regla.",
-         "Si los dos puntos de fuga están muy cerca uno del otro, ¿cómo se ve la caja? ¿Y si están muy lejos? Compruébalo en Blender cambiando la distancia focal."],
-        ["7", "— (repasa tus notas de la semana 6)",
-         "Sigue con las cajas. Objetos de tu trabajo simplificados como cajas y dibujados «a través»: caja de herramientas, monitor, sillas.",
-         "¿Qué arista de tus cajas falla más? ¿Siempre es la del fondo? ¿Por qué crees que es esa?"],
-        ["8", "Drawabox: elipses en perspectiva y cilindros.",
-         "Elipses dentro de planos en perspectiva. Cilindros de pie y acostados. Taza, botella y lata dibujadas observándolas. Sigue con las cajas.",
-         "En una lata acostada, ¿hacia dónde apunta el eje corto de la elipse respecto al eje de la lata?"],
-        ["9", "Norling: 3 puntos.",
-         "Un edificio visto desde abajo. Objetos sencillos <b>de imaginación</b> (lámpara, cámara, mochila) hechos con cajas y cilindros y girados en 3 ángulos. Termina las cajas que lleves. <b>Diagnóstico parcial.</b>",
-         "Si prolongas las verticales de un edificio fotografiado desde abajo, ¿qué pasa? ¿Qué te dice eso sobre cuántos puntos de fuga hay?"],
-    ],
-    "Tu cuarto, la calle, pasillos y muebles, cada uno <b>desde arriba, a la altura de tus ojos y desde abajo</b>. Edificios desde la banqueta.",
+    "tu cuarto, la calle, pasillos y muebles, cada uno <b>desde arriba, a la altura de tus ojos y desde abajo</b>; edificios desde la banqueta.",
     "En 9 de cada 10 fotos encuentras el número correcto de puntos de fuga, y cuando compruebas tus cajas con regla, las aristas convergen de forma razonable.",
     extra=[callout("Lo mínimo que necesitas saber para empezar (lo demás lo descubres tú)", [
         ("b", "La <b>línea de horizonte</b> siempre está a la altura de tus ojos (o de la cámara)."),
@@ -742,87 +763,27 @@ story += phase_block(
     ], color=PHASE[2], bg=PHASE_TINT[2]), vp_diagram(), Spacer(1, 6)],
 )
 
-# Fase 3
 story += phase_block(
-    3, "La cabeza", "SEMANAS 10–15",
+    3, "La cabeza",
     "dibujar cabezas construidas, con proporciones coherentes, girando e inclinándose.",
     "la cabeza es una esfera con una caja en perspectiva: aplicas la fase 2 a algo más complejo, y es la parte de un personaje que más se nota cuando falla.",
-    [
-        ["10", "Método Loomis: Loomis, <i>Drawing the Head and Hands</i>, y los videos de Proko sobre el método Loomis.",
-         "20 esferas con el plano lateral «cortado». Línea central y línea de cejas en distintas direcciones. Cabezas sencillas de frente y de perfil.",
-         "Si la cabeza gira a la derecha, ¿qué le pasa a la línea central de la cara? ¿Y a la oreja que queda más lejos?"],
-        ["11", "Proporciones del rostro (Loomis).",
-         "<b>Mide tú:</b> en 10 fotos de frente y de perfil, y en tu cara con el espejo. ¿Dónde caen los ojos respecto a la altura total de la cabeza? ¿Cuántos «ojos» caben entre los ojos? Compara tus medidas con las de Loomis. No memorices la regla: compruébala.",
-         "¿Qué diferencias encontraste entre «la regla» y las caras reales? ¿Qué cambia en la cara de un niño?"],
-        ["12", "— (tus notas de las semanas 10 y 11)",
-         "Giros e inclinaciones: la misma cabeza desde 8 ángulos (arriba, abajo, 3/4). Cabeza como caja. En Blender, rota un modelo de cabeza para comprobar.",
-         "Cuando ves una cabeza desde abajo, ¿hacia dónde se curvan las líneas de ojos y boca? Relaciónalo con las elipses de la fase 2."],
-        ["13", "Planos de la cabeza (Asaro o Reilly), con un modelo 3D o imágenes.",
-         "Planos simplificados en 5 ángulos. Luego, en fotos reales, encuentra esos planos con ayuda de la luz.",
-         "¿Qué plano de la cara cambia más de luz cuando la cabeza se inclina hacia abajo?"],
-        ["14", "Rasgos como formas: Loomis y Proko.",
-         "Ojo = esfera con párpados encima; nariz = cuña; boca = sobre un cilindro; oreja. 5 rasgos × 5 ángulos. Después, cabezas completas.",
-         "¿Por qué un ojo dibujado como una «almendra» plana se ve mal en 3/4?"],
-        ["15", "—",
-         "Estudia 3 cabezas de referencia en ángulos difíciles y después dibújalas <b>de memoria</b>. <b>Diagnóstico parcial.</b>",
-         "¿Qué parte se te «olvida» siempre al dibujar de memoria? Eso es lo que te falta en la biblioteca visual."],
-    ],
-    "Tu cara con luz de un solo lado desde 8 ángulos (arriba, abajo, 3/4, perfil). Amigos o familia, con su permiso.",
+    "tu cara con luz de un solo lado desde 8 ángulos (arriba, abajo, 3/4, perfil); amigos o familia, con su permiso.",
     "Puedes dibujar de memoria una cabeza construida en 3/4, vista desde arriba y desde abajo, con los rasgos bien ubicados aunque sean simples.",
 )
 
-# Fase 4
 story += phase_block(
-    4, "La figura", "SEMANAS 16–22",
+    4, "La figura",
     "figuras de cuerpo completo con proporciones coherentes: de referencia y, en versión simple, de memoria.",
     "ya sabes medir (fase 1), construir volúmenes (fase 2) y una cabeza, que es la unidad de medida del cuerpo (fase 3).",
-    [
-        ["16", "Gesto: videos de Proko sobre gesto; Loomis, <i>Figure Drawing for All It's Worth</i> (partes de movimiento).",
-         "20–30 gestos al día, de 30 s a 2 min, con la galería y el temporizador. Al final, 2 de 5 min.",
-         "Cuando un gesto de 30 s te sale «tieso», ¿qué dibujaste primero: el contorno o el movimiento?"],
-        ["17", "Proporciones del cuerpo: el canon de Loomis (altura medida en cabezas).",
-         "<b>Mide</b> en 10 fotos y en ti mismo (espejo o foto): ¿cuántas cabezas mides? ¿Dónde cae la mitad del cuerpo? Con el brazo colgando, ¿hasta dónde llegan el codo y la muñeca? Haz tu propia tabla y compárala con el canon.",
-         "¿Por qué un canon «heroico» de 8 cabezas o más se ve raro en una persona común? ¿Qué proporción usan muchos personajes animados, y por qué?"],
-        ["18", "Masas del tórax y la pelvis: Bridgman. Lauricella, <i>Anatomía artística</i> vol. 2.",
-         "Maniquí: caja del tórax + caja de la pelvis (o el «frijol» del torso) + cilindros. Convierte 10 gestos en maniquíes y gíralos (frente, 3/4, espalda).",
-         "Cuando el cuerpo se inclina hacia un lado, ¿qué pasa con el espacio entre el tórax y la pelvis de cada lado?"],
-        ["19", "Escorzo y traslape.",
-         "Brazos y piernas como cilindros que se traslapan. Escorzos desde fotos y desde fotos tuyas con el celular.",
-         "En un escorzo, ¿qué te dice más sobre la profundidad: el contorno de afuera o las líneas que se traslapan por dentro?"],
-        ["20", "Manos: Loomis, <i>Drawing the Head and Hands</i>.",
-         "Palma como caja y dedos como cilindros de 3 segmentos. Tu mano no dominante en 20 poses (con fotos tuyas). Manos de memoria.",
-         "Mide tu mano: ¿el dedo medio es más largo o más corto que la palma? Viendo la palma de frente, ¿dónde quedan los nudillos en realidad?"],
-        ["21", "Pies y puntos óseos (Bridgman): clavícula, esternón, cresta ilíaca, rótula, tobillos.",
-         "Pies como cuñas. Ubica los puntos óseos en fotos y en tus figuras.",
-         "¿Qué puntos óseos se ven casi en cualquier persona, aunque esté vestida o tenga más grasa? ¿Por qué esos son buenos para medir?"],
-        ["22", "—",
-         "Figura de referencia {a} la misma pose de memoria {a} la misma pose girada. <b>Diagnóstico parcial.</b>".format(a=ARROW),
-         "¿En qué paso se rompe la figura cuando la giras: el gesto, el maniquí o las proporciones?"],
-    ],
-    "Tú en el espejo en poses básicas (de pie, sentado, caminando, girado). Tus manos y pies en 20 poses cada uno.",
+    "tú en el espejo en poses básicas (de pie, sentado, caminando, girado); tus manos y pies en 20 poses cada uno.",
     "En la superposición, tus figuras de referencia no tienen errores grandes de proporción. De memoria, una figura simple en 3 poses distintas se sostiene.",
 )
 
-# Fase 5
 story += phase_block(
-    5, "Tu primer personaje", "SEMANAS 23–26",
+    5, "Tu primer personaje",
     "un personaje original tuyo, con proporciones coherentes en varias poses y ángulos.",
     "es el objetivo que pediste: dibujar desde cero. Ahora juntas medir, construir y memoria.",
-    [
-        ["23", "Hojas de modelo (<i>model sheets</i>) y <i>turnarounds</i> de animación: busca ejemplos y guárdalos.",
-         "Diseña un personaje simple. Decide su canon (por ejemplo, 5 o 6 cabezas) y haz su <i>turnaround</i>: frente, 3/4, perfil y espalda, con líneas horizontales guía.",
-         "¿Qué líneas horizontales necesitas para que las 4 vistas coincidan en altura?"],
-        ["24", "—",
-         "El mismo personaje en 6 poses: gesto {a} maniquí {a} forma {a} detalle.".format(a=ARROW),
-         "¿Qué parte del personaje cambia de tamaño sin querer de una pose a otra? ¿Por qué?"],
-        ["25", "Repasa tus notas de perspectiva (fase 2).",
-         "El personaje en un entorno sencillo en 2 puntos. Pon 2 o 3 personajes en el mismo suelo, a distintas distancias.",
-         "Si todos están parados en el mismo suelo y tienen la misma altura, ¿qué relación hay entre el horizonte y sus cabezas?"],
-        ["26", "—",
-         "Proyecto final: una lámina con tu personaje en 3 poses dentro de un entorno. <b>Diagnóstico final completo.</b> Compáralo con la semana 0.",
-         "¿Qué habilidad mejoró más? ¿Cuál menos? Eso decide qué estudias después."],
-    ],
-    "Referencias de ropa y de poses para tu personaje. Tú mismo actuando las 6 poses de la semana 24 (es lo que hacen los animadores).",
+    "referencias de ropa y de poses para tu personaje, y tú mismo actuando sus poses (es lo que hacen los animadores).",
     "Terminas el proyecto final y el diagnóstico. Con eso decidimos juntos el plan de los meses 7 a 12.",
 )
 
@@ -882,6 +843,8 @@ story += bullets([
 story.append(CondPageBreak(12 * cm))
 story.append(P("11. Recursos: el núcleo y los extras", sH1))
 story.append(P("<b>Núcleo:</b> con esto alcanza para las 26 semanas. Antes de buscar algo nuevo, revisa si ya está aquí.", sBody))
+story.append(P("Verifiqué en noviembre de 2026 que estos recursos existen. Los sitios cambian: si algo ya no está, pídeme un reemplazo antes de buscar por tu cuenta.", sSmallMuted))
+story.append(Spacer(1, 4))
 story.append(grid_table([
     ["Recurso", "Tipo / costo", "Cómo tenerlo sin internet", "Fase", "Idioma"],
     ["<b>Drawabox</b> (Lecciones 0–2, 250 Box Challenge)", "Web, gratis", "Guardar cada página como PDF", "1–2", "Inglés"],
@@ -905,10 +868,7 @@ story += bullets([
     "<b>Canales de YouTube en inglés:</b> Sinix Design (fundamentos y perspectiva), Marco Bucci (gesto y diseño), Aaron Blaise (animación y criaturas; fue animador en Disney), Croquis Cafe (sesiones con modelo).",
     "<b>Canales en español que aparecen en listas de recomendaciones:</b> Domerelly, Crearte Araiza, MiltonCor. No los he evaluado: úsalos para motivarte, no como fuente principal.",
 ])
-story.append(Spacer(1, 4))
-story.append(callout("Sobre los enlaces", [
-    "Verifiqué en noviembre de 2026 que los recursos principales existen. Los sitios cambian: si algo ya no está, pregúntame por un reemplazo antes de ponerte a buscar por tu cuenta.",
-], color=GREY))
+
 
 # ---- Anexo A: diagnóstico
 story.append(PageBreak())
