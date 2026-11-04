@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Inglés B2</title>
+<meta name="description" content="Plan de estudio de inglés de A1/A2 a B2 en ~10 meses, 2 h al día, con base en evidencia y pensado para estudiar sin internet.">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --text:#1d1d1b; --muted:#5d5a54; --line:#e3e0d8;
+  --accent:#2f5d8a; --accent-soft:#e8eff6;
+  --ok:#2c7a4c; --ok-soft:#e3f2e8; --warn:#8f6200; --warn-soft:#fbf0d6; --op:#5f5f5f; --op-soft:#ececec;
+  --bad:#a3342b; --bad-soft:#f8e6e3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141413; --surface:#1d1d1b; --text:#ecebe6; --muted:#a8a59d; --line:#34332f;
+    --accent:#8dbbe6; --accent-soft:#1d2a36;
+    --ok:#83d3a1; --ok-soft:#1a2c21; --warn:#e8bd57; --warn-soft:#2e2614; --op:#bdbdbd; --op-soft:#2a2a28;
+    --bad:#f0948a; --bad-soft:#331e1b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141413; --surface:#1d1d1b; --text:#ecebe6; --muted:#a8a59d; --line:#34332f;
+  --accent:#8dbbe6; --accent-soft:#1d2a36;
+  --ok:#83d3a1; --ok-soft:#1a2c21; --warn:#e8bd57; --warn-soft:#2e2614; --op:#bdbdbd; --op-soft:#2a2a28;
+  --bad:#f0948a; --bad-soft:#331e1b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+.wrap{max-width:820px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:1.9rem;line-height:1.2;margin:.2em 0 .3em}
+h2{font-size:1.35rem;margin:2.4em 0 .6em;padding-top:.4em;border-top:1px solid var(--line)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{max-width:70ch}
+a{color:var(--accent)}
+small,.muted{color:var(--muted)}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+.lead{font-size:1.06rem;color:var(--muted);margin-top:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.card > :first-child{margin-top:0}
+.card > :last-child{margin-bottom:0}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0}
+.summary div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.summary b{display:block;font-size:1.15rem}
+.summary span{font-size:.85rem;color:var(--muted)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+nav.toc a{font-size:.85rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);
+  color:var(--text);padding:3px 10px;border-radius:999px}
+nav.toc a:hover{border-color:var(--accent)}
+.pill{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;padding:1px 8px;border-radius:999px;
+  vertical-align:.12em;white-space:nowrap}
+.ev-a{background:var(--ok-soft);color:var(--ok)}
+.ev-b{background:var(--warn-soft);color:var(--warn)}
+.ev-c{background:var(--op-soft);color:var(--op)}
+.off{background:var(--accent-soft);color:var(--accent)}
+.on{background:var(--bad-soft);color:var(--bad)}
+.push{border-left:4px solid var(--bad);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0}
+.push p{margin:.3em 0}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-weight:600}
+tr.cp td{background:var(--accent-soft)}
+tr.light td{color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:12px 0}
+details > summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"▸ ";color:var(--accent)}
+details[open] > summary::before{content:"▾ "}
+details > .in{padding:0 16px 14px}
+ul.check{list-style:none;padding-left:0}
+ul.check li{display:flex;gap:10px;align-items:flex-start;margin:6px 0}
+ul.check input{margin-top:.35em;width:18px;height:18px;flex:none;accent-color:var(--accent)}
+.block{display:grid;grid-template-columns:92px 1fr;gap:4px 12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.block:last-child{border-bottom:0}
+.block .t{font-weight:700;color:var(--accent)}
+pre.prompt{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.88rem;margin:8px 0}
+.btn{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;padding:4px 10px;cursor:pointer}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+footer{margin-top:3em;font-size:.85rem;color:var(--muted)}
+@media (max-width:520px){
+  h1{font-size:1.55rem}
+  .block{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  table.stack tr.hrow{display:none}
+  table.stack, table.stack tbody, table.stack tr, table.stack td{display:block;width:100%}
+  table.stack tr{border-bottom:1px solid var(--line);padding:8px 0}
+  table.stack tr:last-child{border-bottom:0}
+  table.stack td{border:0;padding:3px 12px}
+  table.stack td[data-label]::before{content:attr(data-label);display:block;font-size:.72rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  table.stack td.n{font-size:1rem}
+  table.grid{min-width:520px}
+}
+@media print{
+  :root{--bg:#fff;--surface:#fff;--text:#000;--muted:#444;--line:#ccc}
+  nav.toc,.toolbar,.noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  h2{break-after:avoid}
+  tr,.block,.push,ul.check li{break-inside:avoid}
+  details > summary::before{content:""}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="muted" style="margin:0">Plan personal · creado el 4 de noviembre de 2026</p>
+  <h1>Plan de inglés: de A1/A2 a B2</h1>
+  <p class="lead">2 horas al día, pensado para estudiar sin internet, con cada recomendación etiquetada según la evidencia que tiene detrás.</p>
+  <div class="summary">
+    <div><b>~44 semanas</b><span>9 nov 2026 → 12 sep 2027</span></div>
+    <div><b>2 h/día × 6</b><span>+ 1 h de preparación con wifi</span></div>
+    <div><b>30 min</b><span>mínimo en días malos</span></div>
+    <div><b>B2 First</b><span>examen meta: sep–nov 2027</span></div>
+  </div>
+  <p><span class="pill ev-a">Evidencia fuerte</span> metaanálisis o hallazgos replicados ·
+     <span class="pill ev-b">Evidencia moderada</span> pocos estudios, muestras chicas o resultados mixtos ·
+     <span class="pill ev-c">Opinión</span> práctica común o criterio mío, sin estudios que lo prueben directamente ·
+     <span class="pill off">Sin internet</span> / <span class="pill on">Requiere internet</span></p>
+  <nav class="toc" aria-label="Contenido">
+    <a href="#correcciones">Antes de empezar</a><a href="#hoy">Hoy</a><a href="#tiempo">¿Cuánto tarda?</a>
+    <a href="#metodo">Método</a><a href="#dia">Tu día</a><a href="#como">Cómo hacer cada cosa</a>
+    <a href="#semana1">Semana 1</a><a href="#ruta">Ruta de 44 semanas</a><a href="#descargas">Descargas</a>
+    <a href="#examenes">Exámenes</a><a href="#habito">Hábito</a><a href="#recursos">Recursos</a>
+    <a href="#preguntas">Preguntas</a><a href="#fuentes">Fuentes</a>
+  </nav>
+</header>
+
+<!-- ============================================================ -->
+<h2 id="correcciones">Antes de empezar: 3 cosas en las que no estoy de acuerdo contigo</h2>
+
+<div class="push">
+  <p><b>1. "Hacer todo lo posible" es justo lo que falló en tus 2 semanas.</b> Muchos temas en poco tiempo, sin repasar, es práctica concentrada ("massed practice"). La investigación sobre memoria muestra que repartir el estudio y repasar a intervalos retiene mucho más que estudiar mucho de golpe <span class="pill ev-a">Evidencia fuerte</span>. El plan hace <i>pocas</i> actividades, todos los días, y repasa lo viejo a propósito.</p>
+</div>
+<div class="push">
+  <p><b>2. Probablemente estás más cerca de A1 que de A2, al menos en lectura.</b> Si de 12 palabras entiendes 2, conoces ~17% del texto. Para leer sin ayuda se suele necesitar conocer ~95–98% de las palabras <span class="pill ev-b">Evidencia moderada</span> (la cifra de 98% se cita mucho, pero una réplica de 2025 no la reprodujo del todo). Cambridge calcula ~180–200 horas guiadas para llegar a A2; 2 semanas de curso difícilmente suman eso. No lo sabremos sin un examen diagnóstico: por eso el día 0 es un examen, no una clase.</p>
+  <p>Consecuencia práctica: leer textos "normales" en inglés ahora mismo te sirve poco; vas a empezar con libros graduados (readers) de nivel inicial.</p>
+</div>
+<div class="push">
+  <p><b>3. "B2 lo más rápido posible" necesita un "para qué".</b> ¿Necesitas un certificado (para titularte, una beca, un trabajo) o te basta con entender tutoriales y trabajar en inglés? Cambia las últimas 8 semanas del plan (preparación de examen vs. más contenido real). Dejé por defecto el examen <b>B2 First</b> de Cambridge; dime si es otro.</p>
+  <p class="muted">Cómo pedirlo mejor la próxima vez: <i>"Quiero B2 para [motivo / examen] antes de [fecha]. Tengo [X] h los días [..], estudio en [lugar], con [celular Android/iPhone/laptop], y puedo gastar [$] en libros."</i></p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="hoy">Hoy (miércoles 4 de noviembre): día 0, ~2 horas con internet</h2>
+<p>El objetivo de hoy no es aprender nada: es <b>medir de dónde partes</b> y dejar todo listo para estudiar sin conexión.</p>
+<div class="card">
+<ul class="check" data-group="dia0">
+  <li><input type="checkbox" data-key="d0-1"><span><b>Examen EF SET (50 min)</b> en <span class="mono">efset.org</span>: gratis, mide lectura y comprensión auditiva, da un puntaje 0–100 alineado al Marco Común Europeo (MCER). Anota el puntaje. <span class="pill on">Requiere internet</span></span></li>
+  <li><input type="checkbox" data-key="d0-2"><span><b>Grabación de referencia (2 min):</b> con la grabadora del celular, habla en inglés de: <i>"Tell me about yourself and your favorite animated film."</i> Aunque te trabes. No la escuches todavía; la compararás en la semana 10.</span></li>
+  <li><input type="checkbox" data-key="d0-3"><span><b>Texto de referencia (10 min):</b> escribe sin traductor todo lo que puedas sobre <i>"My life right now"</i>. Guárdalo con fecha.</span></li>
+  <li><input type="checkbox" data-key="d0-4"><span><b>Instala:</b> Anki (AnkiDroid es gratis en Android; en iPhone, AnkiMobile es de pago) + crea cuenta en AnkiWeb para sincronizar · una app de podcasts que descargue episodios (AntennaPod en Android, Apple Podcasts en iPhone) · Kiwix (biblioteca sin conexión).</span></li>
+  <li><input type="checkbox" data-key="d0-5"><span><b>Descarga lo de los días 5 a 8 de noviembre:</b> 3 lecciones de <span class="mono">breakingnewsenglish.com</span> nivel 0 (PDF + MP3) · 3 episodios "Beginner" del podcast <i>Easy Stories in English</i> · en Kiwix, el paquete de VOA <i>Let's Learn English</i> (nivel 1) · la lista Oxford 3000 filtrada a A1.</span></li>
+  <li><input type="checkbox" data-key="d0-6"><span><b>Consigue el libro de gramática:</b> <i>Essential Grammar in Use</i>, edición en español <u>con respuestas</u> (Raymond Murphy, Cambridge; niveles A1–B1). Y 1–2 libros graduados nivel Starter o Stage 1 (Oxford Bookworms, Penguin Readers o Cambridge English Readers). Si el presupuesto no da, mira las alternativas gratis en <a href="#recursos">Recursos</a>.</span></li>
+  <li><input type="checkbox" data-key="d0-7"><span><b>Escribe tus 3 planes "Si… entonces…"</b> (ve <a href="#habito">Hábito</a>). Es lo que más probabilidades tiene de que sigas aquí en 3 meses.</span></li>
+  <li><input type="checkbox" data-key="d0-8"><span><b>Mándame</b> tu puntaje del EF SET y el texto del punto 3. Con eso ajusto en qué semana empiezas.</span></li>
+</ul>
+</div>
+<p><b>Jueves 5 al domingo 8 (arranque suave, 30–60 min/día):</b> aprende a usar Anki con 10 tarjetas nuevas al día, haz 1 lección de Breaking News English nivel 0 al día con el <a href="#escucha">protocolo de escucha</a>, y lee 15 min de un reader. La gramática empieza el lunes 9.</p>
+
+<!-- ============================================================ -->
+<h2 id="tiempo">¿Cuánto tarda llegar a B2, siendo honesto?</h2>
+<p>La referencia más usada es la de Cambridge: horas acumuladas desde cero de aprendizaje <i>guiado</i> (clases más tareas). <span class="pill ev-b">Evidencia moderada</span>: son estimaciones, y el propio Cambridge dice que varían mucho de una persona a otra.</p>
+<div class="tablewrap"><table>
+<tr><th>Nivel</th><th>Horas acumuladas aprox.</th><th>Vocabulario aprox. (Milton)</th></tr>
+<tr><td>A2</td><td>180–200</td><td>1,500–2,500 palabras</td></tr>
+<tr><td>B1</td><td>350–400</td><td>2,500–3,250</td></tr>
+<tr><td>B2</td><td>500–600</td><td>3,250–3,750</td></tr>
+</table></div>
+<p><b>Mi cálculo (opinión razonada):</b> si hoy equivales a ~100 h, te faltan ~400–500 h. Ser hispanohablante ayuda (miles de cognados: <i>animation, character, digital, effect</i>…), pero estudiar solo no equivale exactamente a una hora de clase. El diagnóstico va a mover este número.</p>
+<div class="tablewrap"><table>
+<tr><th>Ritmo</th><th>h/semana</th><th>Semanas para ~450 h</th><th>Llegas aprox.</th><th>Mi lectura</th></tr>
+<tr><td>1 h/día × 6</td><td>6</td><td>~75</td><td>abril 2028</td><td>Sostenible, pero lento</td></tr>
+<tr class="cp"><td><b>2 h/día × 6 + 1 h domingo</b></td><td>13</td><td>~35 + colchón = 44</td><td><b>sep 2027</b></td><td><b>Recomendado</b></td></tr>
+<tr><td>3 h/día × 6</td><td>18</td><td>~25</td><td>mayo 2027</td><td>Con trabajo y escuela, alto riesgo de abandonar <span class="pill ev-c">Opinión</span></td></tr>
+</table></div>
+<p><b>Por qué 2 y no 3 horas:</b> (1) en el estudio de hábitos de Lally (2010), las personas muy inconsistentes no formaron el hábito <span class="pill ev-a">Evidencia fuerte</span>; (2) repartir el estudio rinde más que acumularlo; (3) que 3 h diarias te quemen con trabajo y escuela es mi juicio, no un dato. Si después de 6 semanas las 2 h te salen fácil, súbele a 2.5 h; no al revés.</p>
+<p class="muted">El plan dura 44 semanas (≈ 520–570 h reales) porque incluye 2 semanas ligeras en diciembre, semanas de examen de práctica y colchón para imprevistos.</p>
+
+<!-- ============================================================ -->
+<h2 id="metodo">El método y su evidencia</h2>
+<p>La columna vertebral son las <b>4 corrientes</b> ("four strands") de Paul Nation: un buen curso reparte el tiempo más o menos en cuartos entre (1) <i>input</i> comprensible: leer y escuchar entendiendo, (2) <i>output</i>: hablar y escribir para comunicar, (3) estudio deliberado de la lengua: gramática, vocabulario, pronunciación, y (4) fluidez: usar rápido lo que ya sabes. <span class="pill ev-b">Evidencia moderada</span>: es un marco que integra mucha investigación, no un experimento en sí.</p>
+<div class="tablewrap"><table>
+<tr><th>Principio</th><th>Qué haces en el plan</th><th>Evidencia</th></tr>
+<tr><td>Repaso espaciado</td><td>Anki diario; el domingo repasas gramática de hace 1 y 4 semanas</td><td><span class="pill ev-a">Fuerte</span> Cepeda et al. 2006 (317 experimentos); Dunlosky et al. 2013 lo califican de "alta utilidad"</td></tr>
+<tr><td>Recordar, no releer</td><td>Intentas responder antes de ver la respuesta; ejercicios sin mirar</td><td><span class="pill ev-a">Fuerte</span> Dunlosky et al. 2013: autoevaluación "alta"; releer y subrayar "baja"</td></tr>
+<tr><td>Gramática explícita</td><td>1 tema de Murphy al día, con práctica</td><td><span class="pill ev-a">Fuerte</span> Spada y Tomita 2010; con matices: hay quien cree que esos estudios favorecen el formato de la prueba</td></tr>
+<tr><td>Lectura extensiva a tu nivel</td><td>Libros graduados que entiendas casi completos</td><td><span class="pill ev-a">Fuerte</span> Jeon y Day 2016 (49 estudios): efecto pequeño a mediano, mayor en adultos</td></tr>
+<tr><td>Leer mientras escuchas</td><td>Audio + transcripción en la 2ª escucha</td><td><span class="pill ev-b">Moderada</span> Chang y Millett 2014</td></tr>
+<tr><td>Escucha con estrategia</td><td>Predecir → escuchar → verificar → reflexionar</td><td><span class="pill ev-b">Moderada</span> Vandergrift y Tafaghodtari 2010: ayudó más a quien escuchaba peor (como tú)</td></tr>
+<tr><td>Shadowing (repetir encima del audio)</td><td>30–60 s diarios</td><td><span class="pill ev-b">Moderada</span> Hamada 2016: parece ayudar más a niveles bajos</td></tr>
+<tr><td>Repetir el mismo discurso, cada vez más rápido (4/3/2)</td><td>El mismo tema 3 veces con menos tiempo</td><td><span class="pill ev-b">Moderada</span> de Jong y Perfetti 2011: más fluidez repitiendo el mismo tema</td></tr>
+<tr><td>Corrección de lo que escribes</td><td>Corrección semanal con códigos y reescritura</td><td><span class="pill ev-a">Fuerte</span> Kang y Han 2015 (21 estudios); el efecto depende del nivel</td></tr>
+<tr><td>Practicar pronunciación</td><td>Pocos sonidos que afectan que te entiendan</td><td><span class="pill ev-a">Fuerte</span> Saito y Plonsky 2019 (77 estudios); más claro en habla controlada que espontánea</td></tr>
+<tr><td>Conversar con personas</td><td>1–2 sesiones/semana desde la semana 11</td><td><span class="pill ev-a">Fuerte</span> Mackey y Goo 2007: efectos grandes de la interacción</td></tr>
+<tr><td>Tarjetas español → inglés</td><td>La mitad de tus tarjetas te pide <i>producir</i> la palabra</td><td><span class="pill ev-b">Moderada</span> Webb 2009: aprender en dirección productiva da más conocimiento productivo. Ataca tu "no sé qué palabra decir"</td></tr>
+<tr><td>Contenido de animación/VFX</td><td>Desde B1, leer y escuchar sobre tu carrera</td><td><span class="pill ev-b">Moderada</span> saber del tema mejora la comprensión (bien documentado en lengua materna); que te motive más es <span class="pill ev-c">Opinión</span></td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2 id="dia">Tu día tipo (2 horas en 3 bloques)</h2>
+<p>Dividido en bloques porque repartir rinde más que una sola sesión larga y porque cabe mejor en un día con trabajo. Todo es <span class="pill off">Sin internet</span> si descargaste lo de la semana.</p>
+<div class="card">
+  <div class="block"><div class="t">Bloque A<br><small>30–35 min</small></div>
+    <div><b>Mañana / antes de salir.</b> Anki 15 min (repaso + 15 nuevas) → escucha intensiva del día con el protocolo de 5 pasos (15–20 min).<br><small class="muted">Corrientes: estudio deliberado + input</small></div></div>
+  <div class="block"><div class="t">Bloque B<br><small>30 min</small></div>
+    <div><b>Transporte o pausa en el trabajo.</b> Lectura extensiva de tu reader. Si el libro trae audio, 2–3 veces por semana lee escuchándolo.<br><small class="muted">Corriente: input</small></div></div>
+  <div class="block"><div class="t">Bloque C<br><small>55 min</small></div>
+    <div><b>Noche.</b> Gramática: 1 tema de Murphy (25 min) → diario escrito usando ese tema (15 min) → speaking grabado: 4/3/2 o contar lo que leíste (10 min) → pasar 3–5 palabras o frases nuevas a Anki (5 min).<br><small class="muted">Corrientes: estudio deliberado + output + fluidez</small></div></div>
+  <div class="block"><div class="t">Extra<br><small>no cuenta</small></div>
+    <div><b>Tiempos muertos</b> (caminar, filas, tareas mecánicas): vuelve a escuchar episodios que <u>ya trabajaste</u>. Como ya los entiendes, es práctica de fluidez.</div></div>
+</div>
+<div class="tablewrap"><table>
+<tr><th>Tipo de día</th><th>Qué haces</th></tr>
+<tr><td><b>Día mínimo (30 min)</b><br><small>cansado, enfermo, turno largo</small></td><td>Anki (15) + 1 audio ya conocido (15). Nada más. Cuenta como día cumplido. <span class="pill ev-c">Opinión</span>, basada en que la consistencia es lo que forma el hábito.</td></tr>
+<tr><td><b>Día libre (hasta 3 h)</b></td><td>Los 3 bloques + lectura larga (40 min) + repaso de la semana: rehacer ejercicios sin ver respuestas.</td></tr>
+<tr><td><b>Día de preparación (1 h, con wifi)</b><br><small>por defecto domingo</small></td><td>Descargas de la semana, sincronizar Anki, enviar tu escritura a corregir, conversación en línea (desde la semana 11), llenar el registro. Ve <a href="#descargas">Descargas</a>.</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2 id="como">Cómo hacer cada actividad</h2>
+
+<details open><summary>Anki (vocabulario): 15 min diarios</summary><div class="in">
+<ul>
+  <li><b>15 tarjetas nuevas al día</b>, no más. Los repasos crecen solos y en unas semanas te van a tomar ~15–20 min. Si un día no puedes, haz los repasos y salta las nuevas. <span class="pill ev-c">Opinión</span> (el número es criterio mío; el repaso espaciado sí tiene evidencia fuerte).</li>
+  <li><b>Formato:</b> al frente, una frase corta en inglés con la palabra marcada; atrás, el significado y otro ejemplo. Crea también la tarjeta inversa (español → inglés) y <b>di la respuesta en voz alta antes de voltearla</b>.</li>
+  <li><b>De dónde salen las palabras:</b> fase 1, la lista Oxford 3000 (A1 → A2) más las palabras de tus readers; fases 2–3, sobre todo frases reales de lo que lees y escuchas.</li>
+  <li>Si te equivocas, presiona "Again" sin culpa: equivocarte al intentar recordar es parte de cómo funciona.</li>
+</ul></div></details>
+
+<details><summary>Gramática con Murphy: 25 min diarios</summary><div class="in">
+<ol>
+  <li>Lee la explicación (página izquierda) <b>una vez</b>, rápido.</li>
+  <li>Haz los ejercicios (página derecha) <b>sin volver a ver la explicación</b>.</li>
+  <li>Revisa con la clave. Por cada error, <b>antes</b> de releer la explicación, escribe en una línea por qué crees que te equivocaste. Luego compruébalo. <span class="pill ev-b">Moderada</span> (autoexplicación: utilidad "moderada" en Dunlosky et al. 2013).</li>
+  <li>Escribe 3 oraciones tuyas, sobre tu vida o tu trabajo, con la estructura.</li>
+  <li>Anota en tu <b>registro de errores</b> (una libreta) los que se repiten. <span class="pill ev-c">Opinión</span>: práctica común, útil para el examen.</li>
+</ol>
+<p>Al final del libro hay un <i>Study Guide</i> (prueba diagnóstica): úsalo para <b>saltarte los temas que ya dominas</b>. Es la forma más rápida de recuperar semanas.</p>
+<p><b>Domingo:</b> rehaz 1 ejercicio de un tema de hace 1 semana y otro de hace 4 semanas, sin ver respuestas.</p>
+</div></details>
+
+<details><summary>Lectura extensiva: 30 min diarios</summary><div class="in">
+<ul>
+  <li><b>Regla del nivel:</b> abre una página (~200–250 palabras). Si hay más de ~5 palabras que no conoces, baja un nivel. Si casi no hay ninguna, sube. <span class="pill ev-c">Opinión</span>: es una regla práctica derivada del rango de 95–98%.</li>
+  <li><b>Sin diccionario mientras lees.</b> Subraya y elige máximo 3–5 palabras al final para Anki. Leer debe sentirse fácil; si se siente como estudiar, el libro es muy difícil.</li>
+  <li><b>Elige tú los títulos</b> dentro de tu nivel: en el metaanálisis de Jeon y Day, que el lector escoja sus libros es una característica de los programas que funcionan.</li>
+  <li><b>Ritmo:</b> fase 1, 1 libro cada 1–2 semanas; fases 2–3, 1 por semana. Abandonar un libro aburrido está permitido.</li>
+  <li><b>Al terminar un capítulo:</b> cuéntalo en voz alta en 1 minuto (esto es tu práctica de speaking).</li>
+</ul></div></details>
+
+<details id="escucha" open><summary>Escucha: protocolo de 5 pasos (15–20 min), tu punto más débil</summary><div class="in">
+<ol>
+  <li><b>Predice (1 min):</b> lee el título y anota 3 palabras que crees que vas a oír.</li>
+  <li><b>Escucha 1, sin texto:</b> escribe en una oración de qué trata. Aunque sea "habla de comida y de un problema".</li>
+  <li><b>Escucha 2, con la transcripción:</b> marca las palabras que <i>conocías por escrito pero no reconociste al oírlas</i>. Ese es tu verdadero problema de listening: el oído, no el vocabulario.</li>
+  <li><b>Escucha 3, sin texto:</b> nota cuánto más entiendes ahora.</li>
+  <li><b>Shadowing + dictado:</b> elige 30–60 s; repítelo en voz alta encima del audio, imitando el ritmo. Luego pausa y escribe 2–3 oraciones exactas de oído; compáralas con el texto.</li>
+</ol>
+<p>Pregúntate al final: <i>¿qué me hizo perder el hilo, la velocidad, palabras que se juntan o vocabulario?</i> Esa respuesta decide qué practicar mañana.</p>
+<p class="muted">Base: ciclo metacognitivo de Vandergrift + lectura con audio (Chang y Millett) + shadowing (Hamada). Las tres con evidencia moderada; combinadas, son mi propuesta.</p>
+</div></details>
+
+<details><summary>Speaking sin internet: 10–15 min diarios</summary><div class="in">
+<ul>
+  <li><b>4/3/2:</b> habla del mismo tema 3 veces con menos tiempo cada vez. En fase 1 usa 2 / 1.5 / 1 min; desde la fase 2, 4 / 3 / 2 min. Graba solo la última.</li>
+  <li><b>Contar lo que leíste:</b> después de un capítulo, cuéntalo en 1–2 min sin mirar.</li>
+  <li><b>Medición semanal:</b> en 1 minuto de grabación, cuenta las palabras (palabras por minuto) y las pausas largas. La velocidad de habla se usa en la investigación como medida de fluidez; verás si subes.</li>
+  <li><b>Pronunciación</b>, enfocada en lo que más afecta que te entiendan a los hispanohablantes: la "e" antes de s (<i>"eschool"</i> → <i>school</i>) · vocales largas y cortas (<i>ship / sheep</i>, <i>full / fool</i>) · las 3 terminaciones de <i>-ed</i> (/t/, /d/, /ɪd/) · consonantes finales (<i>worked, months</i>) · la sílaba acentuada (<i>DEvelop</i> ✗ → <i>deVElop</i>). Uno por semana, 5 min.</li>
+  <li><b>Con personas (desde la semana 11, con internet):</b> 30 min/semana con un tutor (italki, Preply) o intercambio gratis (Tandem, HelloTalk). En la fase 3, 2 veces por semana.</li>
+</ul></div></details>
+
+<details><summary>Escritura: 15 min diarios + corrección semanal</summary><div class="in">
+<ul>
+  <li><b>Diario en libreta</b>, usando el tema de gramática del día. Extensión por fase: 5–8 oraciones → 80–150 palabras → 140–190 palabras (formato del B2 First).</li>
+  <li><b>Corrección semanal (con internet):</b> copia 2–3 entradas a Claude u otro asistente con este mensaje:</li>
+</ul>
+<pre class="prompt">Soy estudiante de inglés, nivel [A2]. NO reescribas mi texto. Marca cada error con un código:
+[G] gramática · [V] vocabulario · [O] ortografía · [P] puntuación · [N] correcto pero suena poco natural.
+Por cada error dame una pista corta, no la respuesta. Cuando yo te mande mi versión corregida,
+dime qué quedó bien y qué no, y solo entonces dame la forma correcta de lo que no logré corregir.
+Al final, dime mis 2 errores más repetidos.
+
+[pega tu texto]</pre>
+<p class="muted">Matiz honesto: corregir lo escrito sí mejora la precisión gramatical (Kang y Han 2015), pero no está resuelto si es mejor que te den pistas o la respuesta directa. En niveles bajos, la corrección directa puede servir más. Por eso el mensaje pide primero pistas y, si no lo logras, la respuesta. Después reescribe el texto completo ya corregido.</p>
+</div></details>
+
+<!-- ============================================================ -->
+<h2 id="semana1">Semana 1, día por día (9 al 15 de noviembre)</h2>
+<p class="muted">Supone un nivel A1 alto. Si el EF SET sale más alto, te digo qué saltarte. Los temas son de <i>Essential Grammar in Use</i>; búscalos en el índice por nombre.</p>
+<div class="tablewrap"><table>
+<tr><th>Día</th><th>Gramática</th><th>Escucha (protocolo)</th><th>Escritura + speaking</th></tr>
+<tr><td class="n">Lun 9</td><td><i>am / is / are</i> (afirmación y preguntas)</td><td>Breaking News English nivel 0</td><td>5 oraciones: preséntate (nombre, trabajo, qué estudias). Grábate 1 min.</td></tr>
+<tr><td class="n">Mar 10</td><td>Presente simple afirmativo (<i>I work / she works</i>)</td><td>VOA Let's Learn English nivel 1, lección 1</td><td>5 oraciones: <i>My routine</i>. 4/3/2 corto del mismo tema.</td></tr>
+<tr><td class="n">Mié 11</td><td>Presente simple: negativo y preguntas (<i>do / does</i>)</td><td>Easy Stories in English, episodio "Beginner"</td><td>5 preguntas que le harías a un animador que admiras. Shadowing 1 min.</td></tr>
+<tr><td class="n">Jue 12</td><td><i>there is / there are</i> + preposiciones de lugar</td><td>Breaking News English nivel 0 (otra)</td><td>Describe tu espacio de trabajo (6 oraciones). Descríbelo en voz alta.</td></tr>
+<tr><td class="n">Vie 13</td><td>Posesivos (<i>my, your, 's</i>) y <i>this / that</i></td><td>VOA nivel 1, lección 2</td><td>Describe a tu familia o amigos. Cuenta en 1 min lo que llevas del reader.</td></tr>
+<tr><td class="n">Sáb 14</td><td>Repaso: 1 ejercicio de cada tema <b>sin ver respuestas</b></td><td>Vuelve a escuchar los 5 audios de la semana</td><td>10 oraciones mezclando todo. 4/3/2 completo.</td></tr>
+<tr><td class="n">Dom 15</td><td colspan="3"><b>Preparación (1 h, wifi):</b> descargas de la semana 2 · sincronizar Anki · corrección de escritura con el mensaje de arriba · escuchar tus grabaciones y anotar 3 errores · llenar el registro.</td></tr>
+</table></div>
+<p>Todos los días, además: Anki (15 nuevas, Oxford 3000 A1) y 30 min de reader nivel Starter.</p>
+
+<!-- ============================================================ -->
+<h2 id="ruta">Ruta de 44 semanas</h2>
+<p>Cada semana tiene <b>un</b> foco gramatical y una tarea de producción; lo demás (Anki, lectura, escucha) es diario y fijo dentro de cada fase. Las filas azules son exámenes de práctica.</p>
+<p><b>Regla para ajustar el plan:</b> si en un examen de práctica sales debajo del nivel esperado, alarga la fase 4–6 semanas en vez de avanzar. Avanzar con huecos sale más caro después. <span class="pill ev-c">Opinión</span></p>
+<div class="toolbar noprint"><button class="btn" type="button" id="openAll">Abrir todas las fases</button><button class="btn" type="button" id="closeAll">Cerrar todas</button></div>
+
+<details class="phase" open><summary>Fase 1: A2 sólido · semanas 1–10 · 9 nov 2026 → 17 ene 2027</summary><div class="in">
+<p><b>Materiales fijos:</b> Gramática: <i>Essential Grammar in Use</i> (español) · Lectura: readers Starter → Stage 1 → Stage 2 + Breaking News English niveles 0–1 · Escucha: VOA <i>Let's Learn English</i> niveles 1–2, <i>Easy Stories in English</i> (Beginner), Breaking News English 0–1 · Anki: Oxford 3000 A1 → A2 · Producción: 5–8 oraciones diarias; speaking 1–2 min.</p>
+<div class="tablewrap"><table>
+<tr><th>Sem</th><th>Fechas</th><th>Foco gramatical</th><th>Tarea de producción</th></tr>
+<tr><td class="n">1</td><td>9–15 nov</td><td><i>to be</i>, presente simple, <i>there is/are</i>, posesivos</td><td>Preséntate; tu rutina</td></tr>
+<tr><td class="n">2</td><td>16–22 nov</td><td>Presente continuo vs simple; <i>always, usually, never</i></td><td>Qué haces normalmente vs qué estás haciendo hoy</td></tr>
+<tr><td class="n">3</td><td>23–29 nov</td><td>Pasado simple (regulares e irregulares), <i>was/were</i></td><td>Tu día de ayer; 4/3/2: <i>my last weekend</i></td></tr>
+<tr><td class="n">4</td><td>30 nov–6 dic</td><td>Pasado continuo vs simple; <i>when, while, ago</i></td><td>Una anécdota; contar un capítulo</td></tr>
+<tr><td class="n">5</td><td>7–13 dic</td><td>Futuro: <i>going to / will</i> / presente continuo para planes</td><td>Tus planes de diciembre</td></tr>
+<tr><td class="n">6</td><td>14–20 dic</td><td>Contables/incontables; <i>some/any, much/many</i>; artículos</td><td>Describe tu comida favorita</td></tr>
+<tr class="light"><td class="n">7</td><td>21–27 dic</td><td><b>Semana ligera</b> (días mínimos válidos): repasa los temas 1–6</td><td>Anki + 1 audio diario</td></tr>
+<tr class="light"><td class="n">8</td><td>28 dic–3 ene</td><td><b>Semana ligera:</b> repaso + 1 reader completo por gusto</td><td>Escribe propósitos 2027 en inglés</td></tr>
+<tr><td class="n">9</td><td>4–10 ene</td><td>Comparativos, superlativos, <i>as…as</i></td><td>Compara 2 películas animadas; Blender vs Maya</td></tr>
+<tr class="cp"><td class="n">10</td><td>11–17 ene</td><td><i>can/could, must/have to, should</i> + <b>EXAMEN DE PRÁCTICA 1</b></td><td>A2 Key (muestra de Cambridge) + EF SET + grábate con el tema del día 0 y compara</td></tr>
+</table></div></div></details>
+
+<details class="phase"><summary>Fase 2: B1 · semanas 11–26 · 18 ene → 9 may 2027</summary><div class="in">
+<p><b>Materiales fijos:</b> Gramática: terminar <i>Essential</i> → empezar <i>English Grammar in Use</i> (intermedio) · Lectura: readers Stage 2 → 3 → 4 + Simple English Wikipedia en Kiwix (busca temas de animación, cine, software) + Breaking News 2–3 · Escucha: BBC <i>6 Minute English</i> (con transcripción), <i>Easy Stories</i> (Intermediate), VOA Learning English intermedio · Anki: Oxford 3000 B1 + tus frases · Producción: 80–150 palabras; 4/3/2 completo; <b>conversación en línea 1×/semana</b>.</p>
+<div class="tablewrap"><table>
+<tr><th>Sem</th><th>Fechas</th><th>Foco gramatical</th><th>Tarea de producción</th></tr>
+<tr><td class="n">11</td><td>18–24 ene</td><td>Presente perfecto: <i>ever/never, just/already/yet</i></td><td>Cosas que has y no has hecho; empieza la conversación semanal</td></tr>
+<tr><td class="n">12</td><td>25–31 ene</td><td>Presente perfecto vs pasado; <i>for/since</i></td><td>Tu historia como estudiante de animación</td></tr>
+<tr><td class="n">13</td><td>1–7 feb</td><td>Verbo + <i>-ing</i> / verbo + <i>to</i> (<i>enjoy doing, want to do</i>)</td><td>Correo informal a un amigo (80–100 palabras)</td></tr>
+<tr><td class="n">14</td><td>8–14 feb</td><td>1er condicional; <i>when, as soon as, unless</i></td><td><i>If I finish my project…</i></td></tr>
+<tr><td class="n">15</td><td>15–21 feb</td><td>2º condicional</td><td><i>If I worked at a big animation studio…</i></td></tr>
+<tr><td class="n">16</td><td>22–28 feb</td><td>Voz pasiva (presente y pasado)</td><td>Cómo se hace un cortometraje animado, paso a paso</td></tr>
+<tr><td class="n">17</td><td>1–7 mar</td><td>Relativas: <i>who, which, that, where</i></td><td>Describe a tu director o animador favorito</td></tr>
+<tr class="cp"><td class="n">18</td><td>8–14 mar</td><td><b>Revisión de mitad de fase:</b> EF SET + repaso del registro de errores</td><td>Reescribe tus 3 peores textos de la fase 1</td></tr>
+<tr><td class="n">19</td><td>15–21 mar</td><td><i>used to / would</i> (hábitos pasados)</td><td>Cómo era tu vida a los 12 años</td></tr>
+<tr><td class="n">20</td><td>22–28 mar</td><td>Phrasal verbs frecuentes (<i>get, take, look, turn, put</i>)</td><td>Una historia con 10 de ellos</td></tr>
+<tr><td class="n">21</td><td>29 mar–4 abr</td><td>Estilo indirecto básico (<i>said, told, asked</i>)</td><td>Resume una entrevista o un podcast</td></tr>
+<tr><td class="n">22</td><td>5–11 abr</td><td><i>may/might/could</i>; obligación vs consejo</td><td>Consejos para alguien que empieza Animación</td></tr>
+<tr><td class="n">23</td><td>12–18 abr</td><td>Pasado perfecto; tiempos para narrar</td><td>Cuento de 120 palabras con 3 tiempos pasados</td></tr>
+<tr><td class="n">24</td><td>19–25 abr</td><td><i>too/enough, so/such</i>; preguntas indirectas</td><td>Simula que pides información por teléfono</td></tr>
+<tr><td class="n">25</td><td>26 abr–2 may</td><td>Conectores: <i>although, however, despite, because of</i></td><td>Opinión con 2 argumentos (120–150 palabras)</td></tr>
+<tr class="cp"><td class="n">26</td><td>3–9 may</td><td><b>EXAMEN DE PRÁCTICA 2</b></td><td>B1 Preliminary (muestra de Cambridge + audio) + EF SET + compara grabaciones</td></tr>
+</table></div></div></details>
+
+<details class="phase"><summary>Fase 3: B2 · semanas 27–44 · 10 may → 12 sep 2027</summary><div class="in">
+<p><b>Materiales fijos:</b> Gramática: <i>English Grammar in Use</i> + formato B2 First · Lectura: readers Stage 5 → 6, y después material real: <i>The Animator's Survival Kit</i> (Richard Williams), el manual de Blender, Wikipedia normal · Escucha: <i>6 Minute English</i>, podcasts nivel B2 (por ejemplo <i>All Ears English</i>, <i>Luke's English Podcast</i>; quédate con el que entiendas al ~80–90%), contenido real de VFX (Corridor Crew, si puedes descargarlo legalmente con YouTube Premium), audios del manual del B2 First · Anki: Oxford 3000 B2 → partes de Oxford 5000 + tus frases · Producción: 140–190 palabras en formatos del examen; <b>conversación 2×/semana</b>.</p>
+<div class="tablewrap"><table>
+<tr><th>Sem</th><th>Fechas</th><th>Foco gramatical</th><th>Tarea de producción</th></tr>
+<tr><td class="n">27</td><td>10–16 may</td><td>Presente perfecto continuo vs simple</td><td>Correo formal pidiendo información de un curso</td></tr>
+<tr><td class="n">28</td><td>17–23 may</td><td>Futuro continuo / futuro perfecto</td><td>Dónde estarás en 5 años</td></tr>
+<tr><td class="n">29</td><td>24–30 may</td><td>3er condicional y condicionales mixtos</td><td>Una decisión pasada y qué habría pasado</td></tr>
+<tr><td class="n">30</td><td>31 may–6 jun</td><td><i>wish / if only / I'd rather</i></td><td>4/3/2: deseos y arrepentimientos</td></tr>
+<tr><td class="n">31</td><td>7–13 jun</td><td>Pasiva avanzada; <i>have something done</i>; <i>it is said that</i></td><td>Artículo (formato B2 First, parte 2 de Writing)</td></tr>
+<tr><td class="n">32</td><td>14–20 jun</td><td>Deducción: <i>must have, can't have, might have</i></td><td>Especular sobre fotos (Speaking, parte 2)</td></tr>
+<tr><td class="n">33</td><td>21–27 jun</td><td>Verbos para reportar (<i>suggest, recommend, deny, admit</i>)</td><td>Reseña de una película</td></tr>
+<tr><td class="n">34</td><td>28 jun–4 jul</td><td>Relativas explicativas; oraciones de participio</td><td>Ensayo B2 First (140–190 palabras)</td></tr>
+<tr><td class="n">35</td><td>5–11 jul</td><td>Gerundio vs infinitivo que cambian el significado (<i>stop, remember, try</i>)</td><td>Use of English, parte 1</td></tr>
+<tr class="cp"><td class="n">36</td><td>12–18 jul</td><td><b>EXAMEN DE PRÁCTICA 3</b></td><td>B2 First, muestra 1 completa + EF SET</td></tr>
+<tr><td class="n">37</td><td>19–25 jul</td><td>Formación de palabras: prefijos y sufijos</td><td>Use of English, parte 3</td></tr>
+<tr><td class="n">38</td><td>26 jul–1 ago</td><td>Colocaciones + transformaciones con palabra clave</td><td>Use of English, parte 4</td></tr>
+<tr><td class="n">39</td><td>2–8 ago</td><td>Énfasis e inversión básica (<i>Not only…, What I need is…</i>)</td><td>Speaking, partes 3–4 con tutor</td></tr>
+<tr><td class="n">40</td><td>9–15 ago</td><td>Writing B2 First: ensayo</td><td>Speaking, partes 1–4 completo con tutor</td></tr>
+<tr><td class="n">41</td><td>16–22 ago</td><td>Writing: artículo, reseña, correo/carta, reporte</td><td>Ataca tu registro de errores</td></tr>
+<tr class="cp"><td class="n">42</td><td>23–29 ago</td><td><b>EXAMEN DE PRÁCTICA 4</b> con tiempo real</td><td>B2 First, muestra 2</td></tr>
+<tr><td class="n">43</td><td>30 ago–5 sep</td><td>Repaso dirigido a tus 5 errores más frecuentes</td><td>Speaking 2×/semana</td></tr>
+<tr class="cp"><td class="n">44</td><td>6–12 sep</td><td><b>Examen de práctica final</b> (audios del manual)</td><td>Decide la fecha del examen real</td></tr>
+</table></div></div></details>
+
+<!-- ============================================================ -->
+<h2 id="descargas">Rutina semanal de descarga (día de preparación, ~1 h con wifi)</h2>
+<p>Así ya no tienes que preparar cada día "1 hora antes": preparas <b>una vez por semana</b> y el resto de los días estudias sin conexión.</p>
+<div class="card">
+<ul class="check" data-group="semanal">
+  <li><input type="checkbox" data-key="w-1"><span><b>Podcasts:</b> descarga 6–8 episodios del nivel de tu fase en la app de podcasts (1 por día de estudio).</span></li>
+  <li><input type="checkbox" data-key="w-2"><span><b>Transcripciones:</b> guarda como PDF la página de cada episodio con su transcripción (BBC trae transcripción y hoja de trabajo en la web; en Breaking News English descargas PDF + MP3).</span></li>
+  <li><input type="checkbox" data-key="w-3"><span><b>Anki:</b> sincroniza (sube tu avance y baja tarjetas nuevas).</span></li>
+  <li><input type="checkbox" data-key="w-4"><span><b>Lectura:</b> confirma que tienes el reader de la semana (físico o descargado) y su audio si lo trae.</span></li>
+  <li><input type="checkbox" data-key="w-5"><span><b>Corrección:</b> envía 2–3 entradas del diario con el mensaje de corrección y reescríbelas.</span></li>
+  <li><input type="checkbox" data-key="w-6"><span><b>Conversación</b> (desde la semana 11): 30 min con tutor o intercambio.</span></li>
+  <li><input type="checkbox" data-key="w-7"><span><b>Revisa la ruta</b> de la próxima semana: tema de gramática y tarea de producción.</span></li>
+  <li><input type="checkbox" data-key="w-8"><span><b>Llena el registro</b> (abajo) y mándame el resumen si quieres que ajuste algo.</span></li>
+</ul>
+<div class="toolbar noprint"><button class="btn" type="button" id="resetWeek">Desmarcar la lista semanal</button></div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="examenes">Exámenes y puntos de control</h2>
+<div class="tablewrap"><table>
+<tr><th>Cuándo</th><th>Qué</th><th>Para qué</th></tr>
+<tr><td class="n">Día 0</td><td>EF SET 50 + grabación + texto</td><td>Punto de partida. Según la guía de EF (2018): A1 = 1–30, A2 = 31–40, B1 = 41–50, B2 = 51–60.</td></tr>
+<tr><td class="n">Sem 10</td><td>A2 Key: examen de muestra (ZIP gratis en cambridgeenglish.org + audio MP3)</td><td>¿Pasas a B1?</td></tr>
+<tr><td class="n">Sem 18</td><td>EF SET</td><td>Ver si vas en ritmo</td></tr>
+<tr><td class="n">Sem 26</td><td>B1 Preliminary: muestra gratis + audio</td><td>¿Pasas a B2?</td></tr>
+<tr><td class="n">Sem 36, 42, 44</td><td>B2 First: muestras 1 y 2 (ZIP gratis) + audios del manual para profesores</td><td>¿Estás listo para el examen real?</td></tr>
+<tr><td class="n">Sep–nov 2027</td><td><b>B2 First real</b></td><td>Cuesta aprox. $4,500–6,000 MXN según el centro (precios de 2025–2026; confírmalo con el centro).</td></tr>
+</table></div>
+<p><b>Limitaciones a tener en cuenta:</b> el EF SET solo mide lectura y escucha; tu speaking y writing pueden ir más atrás. En los exámenes de muestra, la escritura y el speaking califícalos con un tutor o con un asistente de IA usando los criterios oficiales del manual. Cambridge cambia los archivos de muestra de vez en cuando; si un enlace no funciona, búscalos en la sección <i>Preparation</i> de cada examen.</p>
+<p><b>Si el EF SET del día 0 sale…</b> <b>≤30:</b> fase 1 completa, quizá 2–4 semanas más · <b>31–40:</b> usa el <i>Study Guide</i> de Murphy para saltarte temas; la fase 1 podría bajar a 6–8 semanas · <b>41 o más:</b> empieza en la semana 11, pero conserva las tareas de speaking y writing de la fase 1.</p>
+<div class="card">
+<p><b>Preguntas para después de cada examen de práctica</b> (respóndelas tú antes de pedirme el análisis):</p>
+<ol>
+  <li>¿En qué parte perdiste más puntos? ¿Fue por no entender, por no saber la palabra o por el tiempo?</li>
+  <li>Compara tu grabación actual con la del día 0: ¿qué cambió y qué sigue igual?</li>
+  <li>¿Qué actividad del día tipo hiciste menos? ¿Tiene relación con tu parte más débil?</li>
+</ol></div>
+
+<!-- ============================================================ -->
+<h2 id="habito">Construir el hábito</h2>
+<ul>
+  <li><b>Planes "Si… entonces…" (intenciones de implementación).</b> En un metaanálisis de 94 pruebas, escribir <i>cuándo, dónde y cómo</i> vas a actuar mejoró el logro de metas con un efecto mediano a grande (d = 0.65) <span class="pill ev-a">Evidencia fuerte</span>. Revisiones más recientes dicen que el efecto depende de cómo formules el plan y de tu motivación.</li>
+</ul>
+<div class="card">
+<p><b>Escribe los tuyos</b> (ejemplos; cámbialos a tu horario real):</p>
+<ul class="check" data-group="sientonces">
+  <li><input type="checkbox" data-key="h-1"><span>Si termino de desayunar, entonces abro Anki antes de tomar el celular para otra cosa. <b>(Bloque A)</b></span></li>
+  <li><input type="checkbox" data-key="h-2"><span>Si me subo al transporte o empieza mi descanso, entonces abro el reader. <b>(Bloque B)</b></span></li>
+  <li><input type="checkbox" data-key="h-3"><span>Si llego a casa y me cambio, entonces abro el Murphy en la mesa antes de cenar. <b>(Bloque C)</b></span></li>
+</ul></div>
+<ul>
+  <li><b>Mismo lugar y misma hora.</b> Los hábitos se automatizan ligados a un contexto. Deja el libro abierto en la mesa y pon Anki en la pantalla principal. <span class="pill ev-c">Opinión</span>, apoyada en cómo funcionan los hábitos.</li>
+  <li><b>Tiempo realista:</b> en Lally et al. (2010), automatizar un hábito tardó una mediana de 66 días, con un rango de 18 a 254. Espera que se sienta pesado hasta enero o febrero; eso es normal, no fracaso.</li>
+  <li><b>Fallar un día no rompe nada:</b> en ese estudio, perder una oportunidad no afectó de forma importante la formación del hábito. Lo que sí la impidió fue la inconsistencia continua. Mi regla: <i>nunca dos días seguidos en cero</i> (para eso existe el día mínimo) <span class="pill ev-c">Opinión</span>.</li>
+  <li><b>Registra tu avance por escrito.</b> Monitorear el progreso mejoró el logro de metas (d = 0.40, 138 estudios), sobre todo cuando se anotaba físicamente y se compartía <span class="pill ev-a">Evidencia fuerte</span>, aunque la mayoría eran estudios de salud. Compartirlo puede ser mandarme el resumen cada domingo.</li>
+</ul>
+<h3>Registro semanal (imprímelo o cópialo en tu libreta)</h3>
+<div class="tablewrap"><table class="grid">
+<tr class="grid-head"><th></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>
+<tr><td>Anki</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Escucha</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Lectura</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Gramática</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Escritura</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Speaking</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Minutos</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<div class="card">
+<p><b>Resumen para mandarme cada domingo</b> (así puedo ajustar sin adivinar):</p>
+<pre class="prompt">Semana [N] · horas: [X] de 13 · días mínimos: [N]
+Anki: [nuevas/día] · % de aciertos: [ ] · Reader: [título, nivel, ¿fácil/difícil?]
+Lo que más me costó: [ ]
+Palabras por minuto en mi grabación: [ ]
+Un párrafo que escribí esta semana: [ ]</pre></div>
+
+<!-- ============================================================ -->
+<h2 id="recursos">Recursos</h2>
+<div class="tablewrap"><table>
+<tr><th>Recurso</th><th>Nivel</th><th>Para qué</th><th>¿Sin internet?</th><th>Costo</th></tr>
+<tr><td>Anki / AnkiDroid</td><td>Todos</td><td>Vocabulario con repaso espaciado</td><td><span class="pill off">Sí</span></td><td>Gratis en Android; de pago en iPhone</td></tr>
+<tr><td><i>Essential Grammar in Use</i>, ed. en español con respuestas (Murphy)</td><td>A1–B1</td><td>Gramática, fases 1–2</td><td><span class="pill off">Sí</span> (libro)</td><td>De pago</td></tr>
+<tr><td><i>English Grammar in Use</i> (Murphy, intermedio)</td><td>B1–B2</td><td>Gramática, fases 2–3</td><td><span class="pill off">Sí</span></td><td>De pago (puede ser usado)</td></tr>
+<tr><td>Readers: Oxford Bookworms, Penguin Readers, Cambridge English Readers</td><td>A1–B2+</td><td>Lectura extensiva; varios traen audio</td><td><span class="pill off">Sí</span></td><td>De pago (busca en bibliotecas y usados)</td></tr>
+<tr><td>Breaking News English</td><td>A2–C1 (niveles 0–6)</td><td>Lectura y escucha graduadas, noticias</td><td><span class="pill off">Sí</span> (PDF + MP3)</td><td>Gratis</td></tr>
+<tr><td>VOA Learning English / <i>Let's Learn English</i></td><td>A1–B1</td><td>Escucha y video para principiantes</td><td><span class="pill off">Sí</span> (Kiwix o app con descarga)</td><td>Gratis</td></tr>
+<tr><td><i>Easy Stories in English</i> (podcast)</td><td>A2–B1</td><td>Cuentos graduados por nivel</td><td><span class="pill off">Sí</span> (app de podcasts)</td><td>Audio gratis; muchas transcripciones son de pago</td></tr>
+<tr><td>BBC Learning English: <i>6 Minute English</i></td><td>B1+</td><td>Escucha con transcripción y hoja de trabajo</td><td><span class="pill off">Sí</span> (descarga el episodio y guarda la transcripción en PDF)</td><td>Gratis</td></tr>
+<tr><td>Kiwix + Simple English Wikipedia</td><td>B1</td><td>Lectura sobre lo que te interese</td><td><span class="pill off">Sí</span></td><td>Gratis</td></tr>
+<tr><td>Oxford 3000 / 5000 (oxfordlearnersdictionaries.com)</td><td>A1–C1</td><td>Lista oficial de vocabulario por nivel</td><td><span class="pill off">Sí</span> (descárgala una vez)</td><td>Gratis</td></tr>
+<tr><td>Google Translate con paquete inglés–español descargado</td><td>A1–A2</td><td>Diccionario de emergencia. Desde B1 cambia a un diccionario para estudiantes en inglés (Cambridge u Oxford en línea).</td><td><span class="pill off">Sí</span></td><td>Gratis</td></tr>
+<tr><td>EF SET</td><td>Todos</td><td>Diagnóstico y seguimiento</td><td><span class="pill on">No</span></td><td>Gratis</td></tr>
+<tr><td>Cambridge: muestras de A2 Key, B1 Preliminary, B2 First</td><td>A2–B2</td><td>Exámenes de práctica</td><td><span class="pill off">Sí</span> (ZIP + MP3)</td><td>Gratis</td></tr>
+<tr><td>Tutores (italki, Preply) o intercambio (Tandem, HelloTalk)</td><td>Desde A2</td><td>Conversación real</td><td><span class="pill on">No</span></td><td>Tutor de pago; intercambio gratis</td></tr>
+<tr><td><i>The Animator's Survival Kit</i>, manual de Blender, Corridor Crew</td><td>B1+ / B2</td><td>Inglés real de tu carrera</td><td>Libro sí; video solo con Premium</td><td>Variable</td></tr>
+</table></div>
+<p><b>Si no puedes comprar nada al inicio:</b> cambia Murphy por la sección de gramática de British Council <i>LearnEnglish</i> (gratis, en línea: guarda las páginas en tu día de preparación) y los readers por Breaking News English + Simple English Wikipedia. Funciona, pero un libro con ejercicios y clave es más cómodo sin internet. Mi recomendación es invertir al menos en el Murphy. <span class="pill ev-c">Opinión</span></p>
+<p class="muted">Lo que <b>no</b> recomiendo como base: apps tipo juego como actividad principal, ver series en inglés con subtítulos en español en la fase 1 (no podrás seguirlas al ~95%), ni las listas de "1,000 frases que debes saber" sin contexto. No es que no sirvan para nada; es que hoy tienes mejores usos para tus 2 horas. <span class="pill ev-c">Opinión</span></p>
+
+<!-- ============================================================ -->
+<h2 id="preguntas">Lo que necesito que me respondas</h2>
+<ol>
+  <li>Tu <b>puntaje del EF SET</b> y el texto de referencia.</li>
+  <li><b>Celular:</b> ¿Android o iPhone? ¿Tienes laptop? (Cambia qué apps te sirven sin conexión.)</li>
+  <li><b>Horario:</b> ¿a qué hora trabajas y en qué momentos tienes tiempo muerto (transporte, descansos)? ¿Puedes usar audífonos en el trabajo?</li>
+  <li><b>Presupuesto:</b> ¿puedes comprar el Murphy y 1–2 readers (algunos cientos de pesos) o vamos solo con recursos gratis?</li>
+  <li><b>El "para qué" del B2:</b> ¿certificado (cuál y para cuándo) o uso práctico?</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2 id="fuentes">Fuentes</h2>
+<p class="muted">Algunas las revisé solo por su resumen o por otros artículos que las citan; lo indico donde importa. Los precios y los enlaces pueden cambiar.</p>
+<h3>Tiempo y niveles</h3>
+<ul>
+  <li>Cambridge English, <a href="https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours">Guided learning hours</a></li>
+  <li>Milton y Alexiou, <a href="https://www.enl.auth.gr/gala/14th/Papers/English%20papers/Milton&amp;Alexiou.pdf">Vocabulary size and the CEFR</a> (hay discrepancias entre fuentes en el rango de B1)</li>
+  <li>Nation (2006), <a href="https://www.wgtn.ac.nz/__data/assets/pdf_file/0018/1626120/2006-How-large-a-vocab.pdf">How large a vocabulary is needed for reading and listening?</a></li>
+  <li>Hu y Nation (2000), sobre el 98%, y la <a href="https://aila2021.dryfta.com/program/abstract-archive/abstract/public/416/unknown-vocabulary-density-reading-comprehension-and-the-98-coverage-figure-replicating-hu-nation-2000">réplica que no la reprodujo del todo</a></li>
+</ul>
+<h3>Memoria y aprendizaje</h3>
+<ul>
+  <li>Cepeda et al. (2006), <a href="https://pubmed.ncbi.nlm.nih.gov/16719566/">Distributed practice in verbal recall tasks</a>, Psychological Bulletin</li>
+  <li>Dunlosky et al. (2013), <a href="https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html">Improving students' learning with effective learning techniques</a> (resumen de APS)</li>
+</ul>
+<h3>Adquisición de segundas lenguas</h3>
+<ul>
+  <li>Nation (2007), The four strands; <a href="https://vuw-web.matrix.squiz.cloud/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/yamamoto-four-strands.pdf">aplicación del marco (PDF)</a></li>
+  <li>Jeon y Day (2016), <a href="https://scholarspace.manoa.hawaii.edu/items/b52a5591-ec04-4026-816f-434361a4e899">The effectiveness of ER on reading proficiency: A meta-analysis</a></li>
+  <li>Spada y Tomita (2010), instrucción explícita, <a href="https://caslsintercom.uoregon.edu/content/23177">resumen</a> · <a href="https://mextesol.net/journal/public/files/22c2f35b587c8952dc69cf81185f4faf.pdf">crítica (MEXTESOL)</a></li>
+  <li>Chang y Millett (2014), ELT Journal 68(1): 31–40, escucha extensiva y lectura con audio (revisado por resúmenes)</li>
+  <li>Vandergrift y Tafaghodtari (2010), Language Learning 60(2) · <a href="https://www.cambridge.org/core/journals/language-teaching/article/replication-research-in-l2-listening-comprehension-a-conceptual-replication-of-graham-macaro-2008-and-an-approximate-replication-of-vandergrift-tafaghodtari-2010-and-brett-1997/95952E2358299C05E78A66145F13ABE4">réplica en Language Teaching</a></li>
+  <li>Hamada (2016), <a href="https://doi.org/10.1177/1362168815597504">Shadowing: Who benefits and how?</a>, Language Teaching Research (revisado por fuentes que lo citan)</li>
+  <li>de Jong y Perfetti (2011), Language Learning 61(2), la técnica 4/3/2 · <a href="https://learnlab.org/research/wiki/index.php/Fostering_fluency_in_second_language_learning">resumen del proyecto</a></li>
+  <li>Kang y Han (2015), <a href="https://doi.org/10.1111/modl.12189">The efficacy of written corrective feedback</a>, Modern Language Journal</li>
+  <li>Saito y Plonsky (2019), pronunciación, <a href="https://discovery.ucl.ac.uk/10156232/1/OASIS_Summary_Saito_and_Plonsky_2019.pdf">resumen OASIS</a></li>
+  <li>Mackey y Goo (2007), <a href="https://eprints.lancs.ac.uk/id/eprint/59863/">Interaction research in SLA: a meta-analysis</a></li>
+  <li>Webb (2009), aprendizaje receptivo vs productivo de vocabulario (revisado por fuentes que lo citan)</li>
+</ul>
+<h3>Hábitos</h3>
+<ul>
+  <li>Lally et al. (2010), <a href="https://www.ucl.ac.uk/news/2009/aug/how-long-does-it-take-form-habit">How long does it take to form a habit?</a> (UCL)</li>
+  <li>Gollwitzer y Sheeran (2006), <a href="https://doi.org/10.1016/S0065-2601(06)38002-1">Implementation intentions and goal achievement</a></li>
+  <li>Harkin et al. (2016), <a href="https://eprints.whiterose.ac.uk/91437/">Does monitoring goal progress promote goal attainment?</a></li>
+</ul>
+<h3>Recursos y exámenes</h3>
+<ul>
+  <li><a href="https://efset.org/ef-set-50">EF SET 50</a> · <a href="https://en.wikipedia.org/wiki/EF_Standard_English_Test">rangos de puntaje</a></li>
+  <li>Cambridge, preparación: <a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/key/preparation/">A2 Key</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/preliminary/preparation/">B1 Preliminary</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/preparation/">B2 First</a></li>
+  <li>Costo del B2 First en México: <a href="https://mediateca.prepa9.unam.mx/info/PIAC%202026%20Proceso%20registro%20y%20pago.pdf">PIAC 2026 (UNAM)</a> · <a href="https://global-exam.com/blog/es/fce-cambridge-mexico-cuales-son-los-centros-de-examenes/">centros en México</a></li>
+  <li><a href="https://dictionary.cambridge.es/en/catalogue/grammar-vocabulary-and-pronunciation/grammar/essential-grammar-in-use-spanish-edition-4th-edition">Essential Grammar in Use, edición en español</a></li>
+  <li><a href="https://www.oxfordlearnersdictionaries.com/about/wordlists/oxford3000-5000">Oxford 3000 y 5000</a></li>
+  <li><a href="https://breakingnewsenglish.com/news_levels.html">Breaking News English: niveles</a></li>
+  <li><a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english">BBC 6 Minute English</a> · <a href="https://learningenglish.voanews.com">VOA Learning English</a> · <a href="https://podcasts.apple.com/pe/podcast/easy-stories-in-english/id1448201565">Easy Stories in English</a></li>
+  <li><a href="https://kiwix.org">Kiwix</a> · <a href="https://download.kiwix.org/zim/">biblioteca de archivos ZIM</a></li>
+</ul>
+
+<footer>
+  <p>Plan v1 · 4 nov 2026. Se ajusta con tu diagnóstico y tus resúmenes semanales. Funciona sin internet: guarda este archivo en tu celular o imprímelo.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='plan-ingles-v1';
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  var state=load();
+  var boxes=document.querySelectorAll('input[type=checkbox][data-key]');
+  boxes.forEach(function(b){
+    if(state[b.dataset.key]) b.checked=true;
+    b.addEventListener('change',function(){state[b.dataset.key]=b.checked;save(state)});
+  });
+  var reset=document.getElementById('resetWeek');
+  if(reset) reset.addEventListener('click',function(){
+    document.querySelectorAll('[data-group=semanal] input').forEach(function(b){b.checked=false;state[b.dataset.key]=false});
+    save(state);
+  });
+  function setAll(open){document.querySelectorAll('details.phase').forEach(function(d){d.open=open})}
+  var oa=document.getElementById('openAll'), ca=document.getElementById('closeAll');
+  if(oa) oa.addEventListener('click',function(){setAll(true)});
+  if(ca) ca.addEventListener('click',function(){setAll(false)});
+  document.querySelectorAll('table:not(.grid)').forEach(function(t){
+    var first=t.querySelector('tr'); if(!first||!first.querySelector('th')) return;
+    var heads=[].map.call(first.querySelectorAll('th'),function(th){return th.textContent.trim()});
+    first.classList.add('hrow');
+    [].slice.call(t.querySelectorAll('tr'),1).forEach(function(tr){
+      var i=0;[].forEach.call(tr.children,function(td){
+        var span=parseInt(td.getAttribute('colspan')||'1',10);
+        if(span===1&&heads[i]) td.setAttribute('data-label',heads[i]);
+        i+=span;});
+    });
+    t.classList.add('stack');
+  });
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true})});
+})();
+</script>
+</body>
+</html>
