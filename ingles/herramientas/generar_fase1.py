@@ -202,35 +202,36 @@ MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "
 def fecha(d):
     return f"{DIAS[d.weekday()]} {d.day} {MESES[d.month-1]}"
 
-# (lecciones LLE de la semana en días de turno [mar, mié, vie, dom], lección lunes, lección jueves, contracción,
-#  escucha de días libres, lectura, tareas {lun:(escribir, hablar), jue:(...)}, tema 4/3/2, lección de hace 4 semanas, ligera)
+# Por semana: lle = lecciones de Let's Learn English en los turnos [mar, mié, vie, dom]
+# la = lección nueva del martes · lb = lección nueva del viernes ("R" = repaso general)
+# wa / wb = escritura del martes / viernes · sa = speaking del jueves · sb = speaking del sábado
 W = {
- 1: dict(lle=[4,5,6,7], lun=1, jue=2, c=1, esc="ELLLO, una lección nivel A1", lec="un texto de ER-Central del nivel más bajo (guardado en PDF) o un reader de la biblioteca",
-         lun_t=("5 oraciones: preséntate (nombre, edad, trabajo, qué estudias).", "Preséntate en voz alta 1 min."),
-         jue_t=("Describe 4 objetos de tu escritorio o mochila con my / this / that.", "Describe en voz alta tu cuarto."), tema="About me", atras=None),
- 2: dict(lle=[8,9,10,11], lun=3, jue=4, c=2, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
-         lun_t=("6 oraciones: tu rutina en un día de trabajo.", "Cuenta tu rutina en 1 min."),
-         jue_t=("5 preguntas para un compañero sobre su rutina, con respuestas inventadas.", "Hazte las 5 preguntas y contéstalas en voz alta."), tema="My routine", atras=None),
- 3: dict(lle=[12,13,14,15], lun=5, jue=6, c=3, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
-         lun_t=("Describe tu lugar de trabajo con there is / there are (6 oraciones).", "Descríbelo en voz alta."),
-         jue_t=("Tu semana con in / on / at (horarios, días, lugares).", "Cuenta tu semana en 1 min."), tema="My workplace", atras=None),
- 4: dict(lle=[16,17,18,19], lun=7, jue=8, c=4, esc="ELLLO nivel A1–A2", lec="Breaking News English nivel 0 (PDF + MP3)",
-         lun_t=("Mira a tu alrededor: 6 oraciones de lo que la gente está haciendo ahora.", "Narra en voz alta lo que haces mientras ordenas tu cuarto."),
-         jue_t=("Un día normal vs hoy: 3 oraciones de cada uno.", "Cuéntalo en 1 min."), tema="A normal day vs today", atras=1),
- 5: dict(lle=[20,21,22,23], lun=9, jue=10, c=5, esc="Easy Stories in English, un episodio Beginner", lec="Breaking News English nivel 0 (PDF + MP3)",
-         lun_t=("Qué puedes y no puedes hacer (software, dibujo, idiomas, deportes).", "Cuéntalo en 1 min."),
-         jue_t=("Qué te encanta, te gusta y odias hacer (con -ing).", "Cuéntalo en 1 min."), tema="My skills and hobbies", atras=3),
- 6: dict(lle=[24,25,26,27], lun=11, jue=12, c=6, esc="Easy Stories in English, un episodio Beginner", lec="Breaking News English nivel 0 (PDF + MP3)",
-         lun_t=("Dónde estabas ayer a las 8 am, 12, 4 pm, 10 pm y 2 am (was / were).", "Dilo en voz alta."),
-         jue_t=("6 cosas que hiciste ayer con verbos regulares.", "Cuéntalo cuidando el sonido de -ed."), tema="Yesterday", atras=5),
- 7: dict(lle=[28,None,29,None], lun=13, jue=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", lun_t=None, jue_t=None, tema=None, atras=None, ligera=True),
- 8: dict(lle=[30,None,31,None], lun=None, jue=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", lun_t=None, jue_t=None, tema=None, atras=None, ligera=True),
- 9: dict(lle=[32,33,34,35], lun=14, jue=15, c=8, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
-         lun_t=("4 preguntas sobre el fin de semana de alguien y las respuestas.", "Pregúntate y contesta en voz alta."),
-         jue_t=("Tus planes para 2027 (going to) y 2 predicciones (will).", "Cuéntalo en 1 min."), tema="My plans for 2027", atras=10),
- 10: dict(lle=[36,37,38,39], lun=16, jue="R", c=9, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
-         lun_t=("Compara 2 películas animadas o 2 programas (Blender / Maya).", "Compáralos en 1 min."),
-         jue_t=("Reescribe tu peor texto de la fase con todo lo que aprendiste.", "4/3/2 con el tema del día 0."), tema=None, atras=12, cp=True),
+ 1: dict(lle=[4,5,6,7], la=1, lb=2, c=1, esc="ELLLO, una lección nivel A1", lec="un texto de ER-Central del nivel más bajo (guardado en PDF) o un reader de la biblioteca",
+         wa="5 oraciones: preséntate (nombre, edad, trabajo, qué estudias).", sa="Preséntate en voz alta 1 min.",
+         wb="Describe 4 objetos de tu escritorio o mochila con my / this / that.", sb="Describe tu cuarto en voz alta.", tema="About me", atras=None),
+ 2: dict(lle=[8,9,10,11], la=3, lb=4, c=2, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
+         wa="6 oraciones: tu rutina en un día de trabajo.", sa="Cuenta tu rutina en 1 min.",
+         wb="5 preguntas para un compañero sobre su rutina, con respuestas inventadas.", sb="Hazte las 5 preguntas y contéstalas en voz alta.", tema="My routine", atras=None),
+ 3: dict(lle=[12,13,14,15], la=5, lb=6, c=3, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
+         wa="Describe tu lugar de trabajo con there is / there are (6 oraciones).", sa="Describe tu lugar de trabajo en voz alta.",
+         wb="Tu semana con in / on / at (horarios, días, lugares).", sb="Cuenta tu semana en 1 min.", tema="My workplace", atras=None),
+ 4: dict(lle=[16,17,18,19], la=7, lb=8, c=4, esc="ELLLO nivel A1–A2", lec="Breaking News English nivel 0 (PDF + MP3)",
+         wa="6 oraciones de lo que la gente a tu alrededor está haciendo ahora.", sa="Narra en voz alta lo que haces mientras ordenas tu cuarto.",
+         wb="Un día normal vs hoy: 3 oraciones de cada uno.", sb="Cuéntalo en 1 min.", tema="A normal day vs today", atras=1),
+ 5: dict(lle=[20,21,22,23], la=9, lb=10, c=5, esc="Easy Stories in English, un episodio Beginner", lec="Breaking News English nivel 0 (PDF + MP3)",
+         wa="Qué puedes y no puedes hacer (software, dibujo, idiomas, deportes).", sa="Cuéntalo en 1 min.",
+         wb="Qué te encanta, te gusta y odias hacer (con -ing).", sb="Cuéntalo en 1 min.", tema="My skills and hobbies", atras=3),
+ 6: dict(lle=[24,25,26,27], la=11, lb=12, c=6, esc="Easy Stories in English, un episodio Beginner", lec="Breaking News English nivel 0 (PDF + MP3)",
+         wa="Dónde estabas ayer a las 8 am, 12, 4 pm, 10 pm y 2 am (was / were).", sa="Dilo en voz alta.",
+         wb="6 cosas que hiciste ayer con verbos regulares.", sb="Cuéntalo cuidando el sonido de -ed.", tema="Yesterday", atras=5),
+ 7: dict(lle=[28,None,29,None], la=13, lb=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", tema=None, atras=None, ligera=True),
+ 8: dict(lle=[30,None,31,None], la=None, lb=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", tema=None, atras=None, ligera=True),
+ 9: dict(lle=[32,33,34,35], la=14, lb=15, c=8, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
+         wa="4 preguntas sobre el fin de semana de alguien, con respuestas.", sa="Pregúntate y contesta en voz alta.",
+         wb="Tus planes para 2027 (going to) y 2 predicciones (will).", sb="Cuéntalo en 1 min.", tema="My plans for 2027", atras=10),
+ 10: dict(lle=[36,37,38,39], la=16, lb="R", c=9, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
+         wa="Compara 2 películas animadas o 2 programas (Blender / Maya).", sa="Compáralos en voz alta en 1 min.",
+         wb="Reescribe tu peor texto de la fase con todo lo que aprendiste.", sb="", tema=None, atras=12, cp=True),
 }
 
 def li(h, txt, rest=False):
@@ -246,33 +247,56 @@ def ref_C(n):
 def anki_li():
     return li("Antes de dormir · 15 min", "Anki: repasos + nuevas (10 del mazo Oxford 3000 + 5 tuyas). Lo último antes de dormir.")
 
-def dia_turno(w, lle, gram_ref, lec):
+def manana_li():
+    return li("05:00–06:00 · ligero", "Opcional. Primeros 15–20 min: solo re-escucha algo que ya conoces mientras despiertas. Después, si estás bien: relee tus notas de la noche y di de memoria 5 oraciones. Si estás agotado, descansa.")
+
+def dia_turno(w, lle, modo, lnum, lec, tarea=""):
+    """modo: 'nueva' (lección nueva + escritura) o 'practica' (repaso + dictado de contracciones)."""
+    c = W[w]["c"]
     out = []
     if lle:
-        out.append(li("22:00–22:25 · Escucha", f"<i>Let's Learn English</i> nivel 1, <b>lección {lle}</b>, con el protocolo de 5 pasos. Subraya en la transcripción las contracciones de {ref_C(W[w]['c'])}."))
+        out.append(li("Al quedar libre · 40 min", f"Escucha: <i>Let's Learn English</i> nivel 1, <b>lección {lle}</b>, con el protocolo de 5 pasos. Subraya en la transcripción las contracciones de {ref_C(c)}."))
     else:
-        out.append(li("22:00–22:25 · Escucha", "Re-escucha una lección que ya trabajaste, sin texto. Nota cuánto más entiendes."))
-    out.append(li("22:25–22:30 · Descanso", "Ojos cerrados o estirarte. Sin celular.", rest=True))
-    out.append(li("22:30–22:50 · Lectura", f"Lectura extensiva: {lec}."))
-    if gram_ref:
-        out.append(li("22:50–23:00 · Gramática", f"Repaso de {ref_L(gram_ref)}: 3 ejercicios sin ver respuestas + 3 oraciones tuyas en la libreta."))
+        out.append(li("Al quedar libre · 40 min", "Escucha: re-escucha lecciones que ya trabajaste, sin texto. Nota cuánto más entiendes."))
+    out.append(li("Descanso · 10 min", "Ojos cerrados o estirarte. Sin celular.", rest=True))
+    if lnum == "R" and modo == "nueva":
+        out.append(li("40 min · Gramática", f"Repaso general: 1 ejercicio de cada lección, de {ref_L(1)} a {ref_L(16)}, sin ver respuestas. Marca las que fallaste. Luego, escritura (15 min): {tarea}"))
+    elif lnum == "R":
+        out.append(li("40 min · Gramática", f"Rehaz los ejercicios que fallaste el viernes. Luego, contracciones {ref_C(c)}: dictado de 3 oraciones de la lección de hoy."))
+    elif modo == "nueva":
+        out.append(li("40 min · Gramática + escritura", f"<b>Lección nueva {ref_L(lnum)}</b>: explicación → ejercicios en libreta → pista → respuestas (25 min). Escritura (15 min): {tarea}"))
     else:
-        out.append(li("22:50–23:00 · Gramática", "Escribe 3 oraciones en tu libreta con lo que aprendiste esta semana."))
-    out.append(li("En tus tareas · extra", "Vuelve a escuchar lecciones ya trabajadas (no cuenta en el tiempo)."))
-    out.append(li("01:40–01:55 · Anki", "Repasos + nuevas, justo antes de tu descanso de las 2:00."))
+        out.append(li("40 min · Repaso + contracciones", f"Repaso de {ref_L(lnum)}: rehaz sin ver respuestas los ejercicios que fallaste y escribe 5 oraciones tuyas (20 min). Contracciones {ref_C(c)}: dictado de 3 oraciones de la lección de hoy (20 min)."))
+    out.append(li("Descanso · 10 min", "Sin pantalla.", rest=True))
+    out.append(li("40 min · Lectura", f"Lectura extensiva: {lec}. Si el texto trae audio, léelo escuchándolo."))
+    out.append(li("Si te sobra tiempo", "Opcional: más lectura, re-escuchar lecciones ya trabajadas o descansar (también cuenta)."))
+    out.append(li("01:40–01:55 · Anki", "Repasos + nuevas, justo antes de dormir a las 2:00."))
+    out.append(manana_li())
     return out
 
-def dia_libre(w, lnum, tareas, lle_ayer):
+def dia_libre(w, dia):
+    """dia: 'lun' o 'jue'. ~1 h 30, para lo que necesita voz."""
     d = W[w]
     out = []
-    if lnum == "R":
-        out.append(li("Bloque 1 · 40 min", f"Repaso general: 1 ejercicio de cada lección de {ref_L(1)} a {ref_L(16)} sin ver respuestas. Marca las que fallaste."))
+    if dia == "lun":
+        prev = W.get(w - 1, {})
+        if w == 1:
+            habla = "Shadowing en voz alta de 1 min de las lecciones 1–3 de LLE → lee en voz alta los ejemplos de " + ref_C(1) + "."
+            repaso = f"Vista previa: lee solo la explicación de {ref_L(1)} (sin ejercicios)."
+        else:
+            prev_lle = prev.get("lle", [None])[-1] or prev.get("lle", [None])[2] or d["lle"][0] - 1
+            if prev.get("tema"):
+                habla = f"4/3/2 grabado con el tema de la semana pasada (<i>{prev['tema']}</i>): ¿dices más palabras que el sábado? → shadowing de 1 min de la lección {prev_lle}."
+            else:
+                habla = f"4/3/2 grabado: <i>What I did on vacation</i> (vuelves de las fiestas; está bien si cuesta) → shadowing de 1 min de la lección {prev_lle}."
+            prev_l = prev.get("lb") if isinstance(prev.get("lb"), int) else (prev.get("la") or 13)
+            repaso = f"Repaso espaciado: 3 ejercicios de {ref_L(prev_l)} sin ver respuestas."
     else:
-        out.append(li("Bloque 1 · 40 min", f"Gramática nueva: {ref_L(lnum)}. Intenta los ejercicios antes de releer la explicación; usa la pista antes de ver la respuesta."))
+        habla = f"{d['sa']} → shadowing en voz alta de 1 min de la lección {d['lle'][1]} → di en voz alta los ejemplos de {ref_C(d['c'])}."
+        repaso = f"Repaso espaciado: 3 ejercicios de {ref_L(d['la'])} sin ver respuestas."
+    out.append(li("Bloque 1 · 40 min", f"<b>Speaking en voz alta:</b> {habla}"))
     out.append(li("Descanso · 10 min", "Camina o estírate, sin pantalla.", rest=True))
-    out.append(li("Bloque 2 · 40 min", f"Escucha: {d['esc']} con el protocolo (20 min) → contracciones {ref_C(d['c'])} (10 min) → shadowing de 1 min de la lección {lle_ayer} (10 min)."))
-    out.append(li("Descanso · 10 min", "Sin pantalla.", rest=True))
-    out.append(li("Bloque 3 · 40 min", f"Lectura 20 min ({d['lec']}) → escritura 10 min: {tareas[0]} → speaking grabado 10 min: {tareas[1]}"))
+    out.append(li("Bloque 2 · 40 min", f"Escucha: {d['esc']} con el protocolo (25 min) → {repaso}"))
     out.append(anki_li())
     return out
 
@@ -280,22 +304,24 @@ def dia_sabado(w):
     d = W[w]
     out = []
     atras = f" + 2 de {ref_L(d['atras'])} (hace ~4 semanas)" if d.get("atras") else ""
-    out.append(li("Bloque 1 · 40 min", f"Repaso de la semana: rehaz sin ver respuestas 2 ejercicios de {ref_L(d['lun'])} y de {ref_L(d['jue'])}{atras}."))
+    out.append(li("Bloque 1 · 40 min", f"Repaso de la semana: rehaz sin ver respuestas 2 ejercicios de {ref_L(d['la'])} y de {ref_L(d['lb'])}{atras}."))
     out.append(li("Descanso · 10 min", "Sin pantalla.", rest=True))
-    out.append(li("Bloque 2 · 40 min", f"Re-escucha sin texto las 4 lecciones de la semana → 4/3/2 grabado (2 / 1.5 / 1 min): <i>{d['tema']}</i> → cuenta las palabras de tu último minuto."))
+    out.append(li("Bloque 2 · 40 min", f"<b>Speaking:</b> {d['sb']} → 4/3/2 grabado (2 / 1.5 / 1 min): <i>{d['tema']}</i> → cuenta las palabras de tu último minuto."))
     out.append(li("Descanso · 10 min", "Sin pantalla.", rest=True))
     out.append(li("Bloque 3 · 45–60 min", f'<b>Preparación con wifi</b> para la semana {w+1}: ver <a href="#descargas">descargas</a>; manda tu resumen semanal.'))
     out.append(anki_li())
     return out
 
-def dia_ligero(lle, extra=""):
+def dia_ligero(lle, extra="", turno=False):
     out = []
     if lle:
-        out.append(li("15 min · Escucha", f"<i>Let's Learn English</i> nivel 1, lección {lle} (escucha 1 y 2 del protocolo)."))
+        out.append(li("15 min · Escucha", f"<i>Let's Learn English</i> nivel 1, lección {lle} (escuchas 1 y 2 del protocolo)."))
     else:
         out.append(li("15 min · Escucha", "Re-escucha una lección que te guste."))
     if extra:
         out.append(li("Opcional", extra))
+    if turno:
+        out.append(li("Opcional", "Si en el turno te sobra tiempo y tienes ganas, lee por gusto. Si no, descansa."))
     out.append(anki_li())
     return out
 
@@ -321,20 +347,19 @@ def semana_html(w):
         extras = {0: (f"Lección {ref_L(13)} (pasado irregular) y 5 verbos irregulares a Anki." if w == 7 else "Lee 20 min por gusto."),
                   3: f"Contracciones {ref_C(7)} con VOA <i>How to Pronounce</i>.",
                   5: "Preparación con wifi para la próxima semana (30 min)."}
-        order = [(0, None), (1, lle[0]), (2, None), (3, None), (4, lle[2]), (5, None), (6, None)]
-        for i, l in order:
+        for i in range(7):
+            l = {1: lle[0], 4: lle[2]}.get(i)
             day = ini + dt.timedelta(days=i)
-            days.append(day_html(day, "ligera", dia_ligero(l, extras.get(i, "")), f"w{w}d{i}",
-                                 "Días mínimos (30 min). Si un día puedes más, lee por gusto." if i == 0 else ""))
+            days.append(day_html(day, "ligera", dia_ligero(l, extras.get(i, ""), turno=i in (1, 2, 4, 6)), f"w{w}d{i}",
+                                 "Días mínimos (30 min). Fiestas: descansa sin culpa." if i == 0 else ""))
         titulo = f"Semana {w} · {ini.day} {MESES[ini.month-1]} – {fin.day} {MESES[fin.month-1]} · semana ligera (fiestas)"
     else:
-        # lun
-        days.append(day_html(ini, "libre", dia_libre(w, d["lun"], d["lun_t"], lle[3] - 4 if w > 1 else 3), f"w{w}d0"))
-        days.append(day_html(ini + dt.timedelta(days=1), "turno", dia_turno(w, lle[0], d["lun"], d["lec"]), f"w{w}d1"))
-        days.append(day_html(ini + dt.timedelta(days=2), "turno", dia_turno(w, lle[1], d["lun"], d["lec"]), f"w{w}d2"))
-        jue_ref = None if d["jue"] == "R" else d["jue"]
-        days.append(day_html(ini + dt.timedelta(days=3), "libre", dia_libre(w, d["jue"], d["jue_t"], lle[1]), f"w{w}d3"))
-        days.append(day_html(ini + dt.timedelta(days=4), "turno", dia_turno(w, lle[2], jue_ref or d["lun"], d["lec"]), f"w{w}d4"))
+        lb_int = d["lb"] if isinstance(d["lb"], int) else "R"
+        days.append(day_html(ini, "libre", dia_libre(w, "lun"), f"w{w}d0"))
+        days.append(day_html(ini + dt.timedelta(days=1), "turno", dia_turno(w, lle[0], "nueva", d["la"], d["lec"], d["wa"]), f"w{w}d1"))
+        days.append(day_html(ini + dt.timedelta(days=2), "turno", dia_turno(w, lle[1], "practica", d["la"], d["lec"]), f"w{w}d2"))
+        days.append(day_html(ini + dt.timedelta(days=3), "libre", dia_libre(w, "jue"), f"w{w}d3"))
+        days.append(day_html(ini + dt.timedelta(days=4), "turno", dia_turno(w, lle[2], "nueva", lb_int, d["lec"], d["wb"]), f"w{w}d4"))
         if d.get("cp"):
             cp = [li("Bloque 1 · 60 min", "<b>A2 Key, examen de muestra</b> (Reading y Listening, con tiempo). Califícate con la clave."),
                   li("Descanso · 15 min", "Sin pantalla.", rest=True),
@@ -344,10 +369,9 @@ def semana_html(w):
             days.append(day_html(ini + dt.timedelta(days=5), "cp", cp, f"w{w}d5", "Examen de práctica 1: decide si pasas a la fase 2 o alargas la fase 1."))
         else:
             days.append(day_html(ini + dt.timedelta(days=5), "sab", dia_sabado(w), f"w{w}d5"))
-        days.append(day_html(ini + dt.timedelta(days=6), "turno", dia_turno(w, lle[3], jue_ref or d["lun"], d["lec"]), f"w{w}d6"))
-        foco = []
-        if d["lun"]: foco.append(L[d["lun"]][0])
-        if d["jue"] and d["jue"] != "R": foco.append(L[d["jue"]][0])
+        days.append(day_html(ini + dt.timedelta(days=6), "turno", dia_turno(w, lle[3], "practica", lb_int, d["lec"]), f"w{w}d6"))
+        foco = [L[d["la"]][0]]
+        if isinstance(d["lb"], int): foco.append(L[d["lb"]][0])
         titulo = f"Semana {w} · {ini.day} {MESES[ini.month-1]} – {fin.day} {MESES[fin.month-1]} · " + " + ".join(foco)
         if d.get("cp"): titulo += " · examen de práctica"
     s, e = ini.isoformat(), fin.isoformat()
@@ -362,19 +386,23 @@ def semana0_html():
         li("20 min · Escucha", "<i>Let's Learn English</i> nivel 1, lección 1, con el protocolo de 5 pasos."),
         anki_li()], "w0d0", "Arranque: hoy solo preparas tus herramientas y pruebas el protocolo."))
     days.append(day_html(d0 + dt.timedelta(days=1), "turno", [
-        li("22:00–22:25 · Escucha", "<i>Let's Learn English</i> nivel 1, lección 2 (protocolo)."),
-        li("22:25–22:30 · Descanso", "Sin celular.", rest=True),
-        li("22:30–22:50 · Lectura", "Lee la mini-lección de contracciones " + ref_C(1) + " y la de gramática " + ref_L(1) + " (solo leer)."),
-        li("01:40–01:55 · Anki", "10 nuevas para aprender a usar la app.")], "w0d1"))
+        li("Al quedar libre · 40 min", "<i>Let's Learn English</i> nivel 1, lección 2 (protocolo)."),
+        li("Descanso · 10 min", "Sin celular.", rest=True),
+        li("40 min · Lectura", "Lee las mini-lecciones " + ref_C(1) + " (contracciones) y " + ref_L(1) + " (gramática), solo para conocerlas. Luego, la transcripción de las lecciones 1 y 2."),
+        li("Si te sobra tiempo", "Re-escucha las lecciones 1 y 2 sin texto, o descansa."),
+        li("01:40–01:55 · Anki", "10 nuevas para aprender a usar la app."),
+        manana_li()], "w0d1"))
     days.append(day_html(d0 + dt.timedelta(days=2), "sab", [
         li("30 min · Escucha", "<i>Let's Learn English</i> nivel 1, lección 3 (protocolo)."),
         li("Descanso · 10 min", "Sin pantalla.", rest=True),
         li("45–60 min · Preparación", 'Prepara la semana 1: ver <a href="#descargas">descargas</a>. Si puedes, pasa a la biblioteca de tu escuela (ve <a href="#biblioteca">biblioteca</a>).'),
         anki_li()], "w0d2"))
     days.append(day_html(d0 + dt.timedelta(days=3), "turno", [
-        li("22:00–22:25 · Escucha", "Re-escucha las lecciones 1–3 sin texto."),
-        li("22:30–22:50 · Lectura", "Lee las transcripciones de las lecciones 1–3."),
-        li("01:40–01:55 · Anki", "Repasos + 10 nuevas.")], "w0d3"))
+        li("Al quedar libre · 40 min", "Re-escucha las lecciones 1–3 sin texto."),
+        li("Descanso · 10 min", "Sin celular.", rest=True),
+        li("40 min · Lectura", "Un texto de ER-Central del nivel más bajo (guardado en PDF)."),
+        li("01:40–01:55 · Anki", "Repasos + 10 nuevas."),
+        manana_li()], "w0d3"))
     return f'<details class="week" open data-start="2026-11-05" data-end="2026-11-08"><summary>Semana 0 · 5 – 8 nov · arranque</summary><div class="in">{"".join(days)}</div></details>'
 
 def leccion_html(n):
@@ -393,27 +421,27 @@ def contr_html(n):
 
 TPL = """
 <div class="tpl">
-<div class="card"><p><b>Día de TURNO</b> <span class="pill t-turno">mar · mié · vie · dom</span><br><small class="muted">≈ 1 h 15 min, todo en silencio y sin internet</small></p>
+<div class="card"><p><b>Día de TURNO</b> <span class="pill t-turno">mar · mié · vie · dom</span><br><small class="muted">≈ 2 h 15 desde que quedas libre (22:00–23:00) hasta las 2:00, en silencio y sin internet, + 5:00–6:00 ligero</small></p>
 <ul class="blocks">
-<li><span class="h">22:00–22:25</span><span>Escucha intensiva (protocolo de 5 pasos)</span></li>
-<li class="rest"><span class="h">22:25–22:30</span><span>Descanso sin celular</span></li>
-<li><span class="h">22:30–22:50</span><span>Lectura extensiva</span></li>
-<li><span class="h">22:50–23:00</span><span>Repaso de gramática + 3 oraciones en libreta</span></li>
-<li><span class="h">En tus tareas</span><span>Re-escuchar audios ya trabajados (extra)</span></li>
-<li><span class="h">01:40–01:55</span><span>Anki, justo antes de dormir a las 2:00</span></li></ul></div>
-<div class="card"><p><b>Día LIBRE</b> <span class="pill t-libre">lun · jue</span><br><small class="muted">≈ 2 h 20 min de estudio + 20 min de descanso; tú eliges la hora</small></p>
-<ul class="blocks">
-<li><span class="h">Bloque 1 · 40</span><span>Gramática nueva (lección L)</span></li>
-<li class="rest"><span class="h">10 min</span><span>Descanso: caminar, sin pantalla</span></li>
-<li><span class="h">Bloque 2 · 40</span><span>Escucha + contracciones (C) + shadowing</span></li>
+<li><span class="h">Al quedar libre · 40</span><span>Escucha intensiva (protocolo de 5 pasos)</span></li>
+<li class="rest"><span class="h">10 min</span><span>Descanso sin pantalla</span></li>
+<li><span class="h">40 min</span><span>Gramática nueva + escritura (mar, vie) o repaso + dictado de contracciones (mié, dom)</span></li>
 <li class="rest"><span class="h">10 min</span><span>Descanso</span></li>
-<li><span class="h">Bloque 3 · 40</span><span>Lectura + escritura + speaking grabado</span></li>
+<li><span class="h">40 min</span><span>Lectura extensiva</span></li>
+<li><span class="h">Lo que sobre</span><span>Opcional: más lectura, re-escucha o descansar</span></li>
+<li><span class="h">01:40–01:55</span><span>Anki, antes de dormir a las 2:00</span></li>
+<li><span class="h">05:00–06:00</span><span>Ligero y opcional: re-escucha + repasar notas</span></li></ul></div>
+<div class="card"><p><b>Día LIBRE</b> <span class="pill t-libre">lun · jue</span><br><small class="muted">≈ 1 h 30; lo que necesita voz. Tú eliges la hora</small></p>
+<ul class="blocks">
+<li><span class="h">Bloque 1 · 40</span><span>Speaking en voz alta: 4/3/2, shadowing, contracciones</span></li>
+<li class="rest"><span class="h">10 min</span><span>Descanso: caminar, sin pantalla</span></li>
+<li><span class="h">Bloque 2 · 40</span><span>Escucha + repaso espaciado de gramática</span></li>
 <li><span class="h">Antes de dormir</span><span>Anki</span></li></ul></div>
-<div class="card"><p><b>SÁBADO</b> <span class="pill t-sab">libre + preparación</span><br><small class="muted">≈ 2 h 30 min; el último bloque es en casa con wifi y laptop</small></p>
+<div class="card"><p><b>SÁBADO</b> <span class="pill t-sab">libre + preparación</span><br><small class="muted">≈ 2 h 30; el último bloque es en casa con wifi y laptop</small></p>
 <ul class="blocks">
 <li><span class="h">Bloque 1 · 40</span><span>Repaso espaciado de gramática</span></li>
 <li class="rest"><span class="h">10 min</span><span>Descanso</span></li>
-<li><span class="h">Bloque 2 · 40</span><span>Re-escucha + 4/3/2 grabado</span></li>
+<li><span class="h">Bloque 2 · 40</span><span>Speaking + 4/3/2 grabado</span></li>
 <li class="rest"><span class="h">10 min</span><span>Descanso</span></li>
 <li><span class="h">Bloque 3 · 45–60</span><span>Descargas + tarjetas de Anki + corrección + resumen</span></li>
 <li><span class="h">Antes de dormir</span><span>Anki</span></li></ul></div>
@@ -435,7 +463,7 @@ html = f"""<!DOCTYPE html>
   <h1>Fase 1, día por día</h1>
   <p class="lead">De A1 (EF SET 29) a A2 · 5 nov 2026 → 17 ene 2027 · ajustada a tus turnos nocturnos · solo recursos gratis.</p>
   <div class="summary">
-    <div><b>~12 h/semana</b><span>4 turnos × 1 h 15 + 3 días libres</span></div>
+    <div><b>~15 h/semana</b><span>4 turnos de ~2 h 15 + 3 días libres más cortos</span></div>
     <div><b>16 lecciones</b><span>de gramática, con pistas y respuestas</span></div>
     <div><b>9 mini-lecciones</b><span>de contracciones y habla conectada</span></div>
     <div><b>Semana 10</b><span>examen de práctica: decide si sigues</span></div>
@@ -447,7 +475,7 @@ html = f"""<!DOCTYPE html>
 </header>
 
 <h2 id="plantillas">Tus 3 tipos de día</h2>
-<p>Las horas del turno salen de lo que me dijiste: libre de 22:00 a 23:00 y duermes de 2:00 a 5:00. En días libres no sé a qué hora despiertas, así que los bloques no tienen hora fija: <b>elige una y repítela siempre</b>, porque la misma hora y el mismo lugar ayudan a que se vuelva automático.</p>
+<p>En el turno quedas libre entre las 22:00 y las 23:00 (varía) y lo estás hasta las 2:00; luego, de 5:00 a 6:00. Como la hora de inicio cambia, los bloques del turno <b>empiezan cuando quedas libre</b>, no a una hora fija. El turno es tu tiempo principal de estudio; los días libres son más cortos y se quedan con lo que necesita voz. En días libres, <b>elige una hora y repítela siempre</b>: la misma hora y el mismo lugar ayudan a que se vuelva automático.</p>
 {TPL}
 <p class="muted">Por qué Anki va justo antes de dormir y por qué los descansos son sin pantalla: ve <a href="#porque">Por qué así</a>.</p>
 
@@ -489,8 +517,10 @@ html = f"""<!DOCTYPE html>
 <ul>
   <li><b>Anki justo antes de dormir:</b> en Gais, Lucas y Born (2006), estudiantes que aprendieron vocabulario y luego durmieron lo recordaron mejor que quienes pasaron el día despiertos; y la falta de sueño perjudicó la memoria <span class="pill ev-b">Evidencia moderada</span> (un estudio clásico, muy citado y consistente con la investigación sobre sueño y memoria).</li>
   <li><b>Descansos de 5–10 min:</b> un metaanálisis de micro-descansos (Albulescu et al., 2022) encontró que aumentan la energía y reducen la fatiga, pero el efecto sobre el rendimiento fue pequeño y no significativo <span class="pill ev-a">Evidencia fuerte</span> para el ánimo, débil para el aprendizaje. Que el descanso sea <u>sin pantalla</u> viene de Dewar et al. (2012): 10 min de reposo con los ojos cerrados después de aprender mejoraron el recuerdo una semana después, pero en adultos mayores <span class="pill ev-b">Evidencia moderada</span>. Las duraciones exactas (25/5, 40/10) son <span class="pill ev-c">Opinión</span>.</li>
-  <li><b>En el turno solo cosas silenciosas</b> (escuchar, leer, escribir) y en días libres lo que necesita voz (speaking, shadowing): <span class="pill ev-c">Opinión</span>, por logística.</li>
-  <li><b>Gramática nueva solo en días libres</b> y repaso en los turnos: así cada tema se ve al menos 3 veces separadas en la semana y otra vez a las 4 semanas <span class="pill ev-a">Evidencia fuerte</span> (repaso espaciado).</li>
+  <li><b>Lo más difícil va al inicio de la ventana del turno</b> (escucha intensiva y gramática nueva) y la lectura al final; <b>de 5 a 6 solo cosas ligeras</b>. En turnos nocturnos, el estado de alerta y el rendimiento mental caen en la madrugada, con el punto más bajo hacia las 3–5 am, y al despertar hay un atontamiento ("inercia del sueño") que suele durar hasta ~30 min (Tassi y Muzet, 2000) <span class="pill ev-a">Evidencia fuerte</span> sobre esos fenómenos. Que eso implique este orden de estudio es mi aplicación <span class="pill ev-c">Opinión</span>.</li>
+  <li><b>En el turno solo cosas silenciosas</b> (escuchar, leer, escribir) y en días libres lo que necesita voz (speaking, shadowing). No sé si puedes hablar en voz baja en el trabajo; si sí, el shadowing también puede ir al turno <span class="pill ev-c">Opinión</span>, por logística.</li>
+  <li><b>Gramática nueva martes y viernes, repaso al día siguiente, el jueves o lunes y el sábado</b>: cada tema se ve 3–4 veces separadas en la semana y otra vez a las 4 semanas <span class="pill ev-a">Evidencia fuerte</span> (repaso espaciado).</li>
+  <li><b>Por qué no meto más gramática con el tiempo extra:</b> va a lectura y escucha, que es lo que más te falta para pasar de captar palabras a entender frases, y lo que menos cansa a esas horas <span class="pill ev-c">Opinión</span>, apoyada en el peso que da Nation al input y en Jeon y Day (2016).</li>
   <li><b>Solo la Fase 1 está día por día</b> a propósito: el examen de práctica de la semana 10 va a mostrar si tu ritmo es el estimado, y la Fase 2 se arma con ese dato.</li>
 </ul>
 <h3>Fuentes de esta página</h3>
@@ -498,10 +528,11 @@ html = f"""<!DOCTYPE html>
   <li>Gais, Lucas y Born (2006), <a href="https://ecommons.cornell.edu/entities/publication/f609cbe6-fa54-42f8-842d-d5232c58ce63">Sleep after learning aids memory recall</a>, Learning &amp; Memory</li>
   <li>Albulescu et al. (2022), <a href="https://doaj.org/article/c6f37b6ba159469296b2cb968b65505f">"Give me a break!" Micro-breaks meta-analysis</a>, PLOS ONE</li>
   <li>Dewar et al. (2012), <a href="https://www.psychologicalscience.org/news/releases/boosting-new-memories-with-wakeful-resting.html">Brief wakeful resting boosts new memories over the long term</a> (resumen de APS)</li>
+  <li>Tassi y Muzet (2000), <a href="https://www.em-consulte.com/article/588100/sleep-inertia">Sleep inertia</a>, Sleep Medicine Reviews · <a href="https://pubmed.ncbi.nlm.nih.gov/34969316/">Disturbance of the circadian system in shift work</a> (revisión)</li>
   <li>Brown y Hilferty (1986), RELC Journal 17(2): 59–70 · <a href="https://cambridge.org/core/services/aop-cambridge-core/content/view/555DB88EE394C8ABA480DBCD20FF408D/S0261444822000441a.pdf/jd-browns-essential-bookshelf-connected-speech.pdf">J.D. Brown, bibliografía sobre habla conectada</a></li>
   <li>Recursos: <a href="https://learningenglish.voanews.com/a/lets-learn-english-level-1-lesson-50/5182991.html">VOA Let's Learn English</a> (52 lecciones en el nivel 1) · <a href="https://www.elllo.org/">ELLLO</a> · <a href="https://www.er-central.com/help/">ER-Central</a> · <a href="https://breakingnewsenglish.com/news_levels.html">Breaking News English</a> · <a href="https://learnenglish.britishcouncil.org/grammar/a1-a2-grammar">British Council: gramática A1–A2</a> · <a href="https://kiwix.org">Kiwix</a></li>
 </ul>
-<footer><p>Fase 1 · v1 · 5 nov 2026. Se rehace después del examen de práctica de la semana 10.</p></footer>
+<footer><p>Fase 1 · v2 · 5 nov 2026 (corregido el horario del turno). Se rehace después del examen de práctica de la semana 10.</p></footer>
 </div>
 <script>
 (function(){{
