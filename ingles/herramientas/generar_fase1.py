@@ -15,6 +15,7 @@ OUT = ROOT / "fase1.html"
 base_css = re.search(r"<style>(.*?)</style>", INDEX.read_text(encoding="utf-8"), re.S).group(1)
 
 EXTRA_CSS = """
+.mono,code,a{overflow-wrap:anywhere}
 .week{margin:14px 0}
 .day{border-top:1px solid var(--line);padding:12px 0}
 .day:first-of-type{border-top:0}
@@ -184,7 +185,7 @@ C[6] = ("<i>wasn't / weren't</i>, -ed y la T americana", """
 <p><i>wasn't, weren't</i>. Repasa los 3 sonidos de -ed (lección 12).</p>
 <p><b>La T americana entre vocales suena como la "r" suave del español</b> (la de "pero"): <i>water</i> → "wárer", <i>better</i> → "bérer", <i>a lot of</i> → "a lárov", <i>get it</i> → "gérit", <i>what is</i> → "wáris". Una vez que lo notas, lo oyes en todas partes.</p>""")
 C[7] = ("Repaso con VOA <i>How to Pronounce</i>", """
-<p>En Kiwix descarga el paquete de VOA <i>How to Pronounce</i> (inglés americano). Busca los episodios sobre reducciones y contracciones y repite las contracciones 1–6 con ellos.</p>""")
+<p>En Kiwix, abre <b>VOA Learning → How to Pronounce</b> (158 videos de 2 min, inglés americano). Mira los que tienen frases completas (por ejemplo <i>What Are You Doing This Weekend?</i> o <i>I Am Going to…</i>), fíjate cómo se unen y reducen las palabras, y repite con ellos las contracciones 1–6.</p>""")
 C[8] = ("<i>didn't, didja, gonna, I'll, won't</i>", """
 <p><b>did you → "didja"</b> (<i>Did you see it?</i> → "Didja see it?"); <b>what did you → "whadja"</b>. <b>going to → gonna</b>, <u>solo</u> cuando le sigue un verbo: <i>I'm gonna study</i> sí; <i>I'm going to school</i> nunca se convierte en "gonna school".</p>
 <p><i>I'll</i> suena parecido a "ail". <b>won't</b> /woʊnt/ vs <b>want</b> /wɑnt/: la diferencia está en la vocal (won't suena "ou").</p>""")
@@ -206,16 +207,16 @@ def fecha(d):
 # la = lección nueva del martes · lb = lección nueva del viernes ("R" = repaso general)
 # wa / wb = escritura del martes / viernes · sa = speaking del jueves · sb = speaking del sábado
 W = {
- 1: dict(lle=[4,5,6,7], la=1, lb=2, c=1, esc="ELLLO, una lección nivel A1", lec="un texto de ER-Central del nivel más bajo (guardado en PDF) o un reader de la biblioteca",
+ 1: dict(lle=[4,5,6,7], la=1, lb=2, c=1, esc="el video <i>Speaking Practice</i> de una lección de esta semana (en Kiwix; su guion está en el PDF del curso)", lec="un texto de ER-Central del nivel más bajo (guardado en PDF) o un reader de la biblioteca",
          wa="5 oraciones: preséntate (nombre, edad, trabajo, qué estudias).", sa="Preséntate en voz alta 1 min.",
          wb="Describe 4 objetos de tu escritorio o mochila con my / this / that.", sb="Describe tu cuarto en voz alta.", tema="About me", atras=None),
- 2: dict(lle=[8,9,10,11], la=3, lb=4, c=2, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
+ 2: dict(lle=[8,9,10,11], la=3, lb=4, c=2, esc="el video <i>Speaking Practice</i> de una lección de esta semana (en Kiwix; su guion está en el PDF del curso)", lec="ER-Central (PDF) o reader de la biblioteca",
          wa="6 oraciones: tu rutina en un día de trabajo.", sa="Cuenta tu rutina en 1 min.",
          wb="5 preguntas para un compañero sobre su rutina, con respuestas inventadas.", sb="Hazte las 5 preguntas y contéstalas en voz alta.", tema="My routine", atras=None),
- 3: dict(lle=[12,13,14,15], la=5, lb=6, c=3, esc="ELLLO, una lección nivel A1", lec="ER-Central (PDF) o reader de la biblioteca",
+ 3: dict(lle=[12,13,14,15], la=5, lb=6, c=3, esc="el video <i>Speaking Practice</i> de una lección de esta semana (en Kiwix; su guion está en el PDF del curso)", lec="ER-Central (PDF) o reader de la biblioteca",
          wa="Describe tu lugar de trabajo con there is / there are (6 oraciones).", sa="Describe tu lugar de trabajo en voz alta.",
          wb="Tu semana con in / on / at (horarios, días, lugares).", sb="Cuenta tu semana en 1 min.", tema="My workplace", atras=None),
- 4: dict(lle=[16,17,18,19], la=7, lb=8, c=4, esc="ELLLO nivel A1–A2", lec="Breaking News English nivel 0 (PDF + MP3)",
+ 4: dict(lle=[16,17,18,19], la=7, lb=8, c=4, esc="el video <i>Speaking Practice</i> de una lección de esta semana (en Kiwix; su guion está en el PDF del curso)", lec="Breaking News English nivel 0 (PDF + MP3)",
          wa="6 oraciones de lo que la gente a tu alrededor está haciendo ahora.", sa="Narra en voz alta lo que haces mientras ordenas tu cuarto.",
          wb="Un día normal vs hoy: 3 oraciones de cada uno.", sb="Cuéntalo en 1 min.", tema="A normal day vs today", atras=1),
  5: dict(lle=[20,21,22,23], la=9, lb=10, c=5, esc="Easy Stories in English, un episodio Beginner", lec="Breaking News English nivel 0 (PDF + MP3)",
@@ -226,10 +227,10 @@ W = {
          wb="6 cosas que hiciste ayer con verbos regulares.", sb="Cuéntalo cuidando el sonido de -ed.", tema="Yesterday", atras=5),
  7: dict(lle=[28,None,29,None], la=13, lb=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", tema=None, atras=None, ligera=True),
  8: dict(lle=[30,None,31,None], la=None, lb=None, c=7, esc="re-escucha libre", lec="lo que quieras de tu nivel", tema=None, atras=None, ligera=True),
- 9: dict(lle=[32,33,34,35], la=14, lb=15, c=8, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
+ 9: dict(lle=[32,33,34,35], la=14, lb=15, c=8, esc="Easy Stories in English (un episodio Beginner) o un Speaking Practice", lec="Breaking News English nivel 0–1",
          wa="4 preguntas sobre el fin de semana de alguien, con respuestas.", sa="Pregúntate y contesta en voz alta.",
          wb="Tus planes para 2027 (going to) y 2 predicciones (will).", sb="Cuéntalo en 1 min.", tema="My plans for 2027", atras=10),
- 10: dict(lle=[36,37,38,39], la=16, lb="R", c=9, esc="Easy Stories in English o ELLLO A2", lec="Breaking News English nivel 0–1",
+ 10: dict(lle=[36,37,38,39], la=16, lb="R", c=9, esc="Easy Stories in English (un episodio Beginner) o un Speaking Practice", lec="Breaking News English nivel 0–1",
          wa="Compara 2 películas animadas o 2 programas (Blender / Maya).", sa="Compáralos en voz alta en 1 min.",
          wb="Reescribe tu peor texto de la fase con todo lo que aprendiste.", sb="", tema=None, atras=12, cp=True),
 }
@@ -255,7 +256,7 @@ def dia_turno(w, lle, modo, lnum, lec, tarea=""):
     c = W[w]["c"]
     out = []
     if lle:
-        out.append(li("Al quedar libre · 40 min", f"Escucha: <i>Let's Learn English</i> nivel 1, <b>lección {lle}</b>, con el protocolo de 5 pasos; el paso 5 (shadowing) en voz alta. Subraya en la transcripción las contracciones de {ref_C(c)}."))
+        out.append(li("Al quedar libre · 40 min", f"Escucha: <i>Let's Learn English</i> nivel 1, <b>lección {lle}</b>, con el protocolo de 5 pasos (la transcripción está en el PDF del curso, sección <i>Conversation</i>); el paso 5 (shadowing) en voz alta. Subraya las contracciones de {ref_C(c)}. Últimos 5 min: pasa 5 frases de la lección a tu mazo <a href='#anki'>Mis frases</a>."))
     else:
         out.append(li("Al quedar libre · 40 min", "Escucha: re-escucha lecciones que ya trabajaste, sin texto. Nota cuánto más entiendes."))
     out.append(li("Descanso · 10 min", "Ojos cerrados o estirarte. Sin celular.", rest=True))
@@ -381,8 +382,8 @@ def semana0_html():
     days = []
     days.append(day_html(d0, "libre", [
         li("Con wifi · 60–90 min", "✔ EF SET (hecho: 29, A1). Haz la <b>grabación de 2 min</b> y el <b>texto de referencia</b> si no los hiciste (ve la página principal)."),
-        li("Instalar", "AnkiDroid, AntennaPod y Kiwix. En Kiwix descarga VOA <i>Let's Learn English</i> (nivel 1) y <i>How to Pronounce</i>. En AnkiWeb busca un mazo compartido de Oxford 3000 (revisa que tenga frases y audio)."),
-        li("20 min · Escucha", "<i>Let's Learn English</i> nivel 1, lección 1, con el protocolo de 5 pasos."),
+        li("Descargar", 'Con wifi, lo de <a href="#descargas">Qué descargar</a> (Kiwix: VOA Learning; PDF del curso; AntennaPod) y configura Anki como dice <a href="#anki">Anki: cómo usarlo</a>.'),
+        li("20 min · Escucha", "<i>Let's Learn English</i> lección 1, con el protocolo de 5 pasos (transcripción en el PDF)."),
         anki_li()], "w0d0", "Arranque: hoy solo preparas tus herramientas y pruebas el protocolo."))
     days.append(day_html(d0 + dt.timedelta(days=1), "turno", [
         li("Al quedar libre · 40 min", "<i>Let's Learn English</i> nivel 1, lección 2 (protocolo)."),
@@ -442,7 +443,7 @@ TPL = """
 <li class="rest"><span class="h">10 min</span><span>Descanso</span></li>
 <li><span class="h">Bloque 2 · 40</span><span>Speaking + 4/3/2 grabado</span></li>
 <li class="rest"><span class="h">10 min</span><span>Descanso</span></li>
-<li><span class="h">Bloque 3 · 45–60</span><span>Descargas + tarjetas de Anki + corrección + resumen</span></li>
+<li><span class="h">Bloque 3 · 45–60</span><span>Descargas + sincronizar Anki + corrección + resumen</span></li>
 <li><span class="h">Antes de dormir</span><span>Anki</span></li></ul></div>
 </div>"""
 
@@ -468,7 +469,7 @@ html = f"""<!DOCTYPE html>
     <div><b>Semana 10</b><span>examen de práctica: decide si sigues</span></div>
   </div>
   <nav class="toc" aria-label="Contenido">
-    <a href="#plantillas">Tus 3 tipos de día</a><a href="#semanas">Día por día</a><a href="#descargas">Descargas</a>
+    <a href="#plantillas">Tus 3 tipos de día</a><a href="#semanas">Día por día</a><a href="#descargas">Qué descargar</a><a href="#anki">Anki</a>
     <a href="#gramatica">Gramática L1–L16</a><a href="#contracciones">Contracciones C1–C9</a><a href="#biblioteca">Biblioteca</a><a href="#porque">Por qué así</a>
   </nav>
 </header>
@@ -484,18 +485,56 @@ html = f"""<!DOCTYPE html>
 {semana0_html()}
 {"".join(semana_html(w) for w in range(1, 11))}
 
-<h2 id="descargas">Qué descargar cada sábado (con wifi)</h2>
+<h2 id="descargas">Qué descargar</h2>
+<h3>Una sola vez (con wifi, antes del lunes 9)</h3>
+<div class="card">
+<ul class="check" data-group="unavez">
+  <li><input type="checkbox" data-key="u-1"><span><b>Revisa tu espacio:</b> en Ajustes → Almacenamiento necesitas <b>~8 GB libres</b>. Si tienes tarjeta SD, Kiwix puede guardar ahí (en Kiwix: Ajustes → Almacenamiento). Si no te alcanza, dime cuánto tienes libre y busco otra opción.</span></li>
+  <li><input type="checkbox" data-key="u-2"><span><b>Kiwix → pestaña de descargas (Online / Biblioteca) → busca <code>VOA</code> → descarga "VOA Learning"</b> (7.1 GB, de enero 2025). Ya no hay paquetes separados: todo viene ahí, en estas listas:<br>· <b>Let's Learn English</b>: las 52 lecciones del nivel 1, con sus videos <i>Speaking Practice</i> y <i>Pronunciation Practice</i>. Es tu escucha principal.<br>· <b>How to Pronounce</b>: para las contracciones (C7).<br>· <b>Let's Learn English Level 2</b>: para la fase 2.<br>Los videos <u>no traen transcripción</u>; por eso necesitas el PDF del siguiente punto.</span></li>
+  <li><input type="checkbox" data-key="u-3"><span><b>PDF del curso <i>Let's Learn English – Level 1</i></b> (601 páginas, 161 MB), publicado gratis por el Departamento de Estado de EE. UU.: <span class="mono">americanspaces.state.gov/wp-content/uploads/sites/292/LetsLearnEnglishLevel1.pdf</span>. Cada lección trae la <b>Conversation</b> (la transcripción del video), las <b>Key Words</b> y el guion del <i>Speaking Practice</i>. El índice está en la página 2: por ejemplo, la lección 4 empieza en la página 34.</span></li>
+  <li><input type="checkbox" data-key="u-4"><span><b>AntennaPod → busca y suscríbete a <i>Easy Stories in English</i></b> (Ariel Goodbody). Por ahora es <b>el único podcast</b>: no te suscribas a diez. Descarga 3 episodios que digan <b>(Beginner)</b> en el título. Muchos tienen la transcripción de pago, así que úsalos como escucha extensiva: sin texto, buscando la idea general. Entran fuerte desde la semana 5; antes, solo si te sobra tiempo.</span></li>
+</ul>
+<p class="muted">Por qué conviene tener tu copia: VOA casi dejó de operar en 2025 y Learning English dejó de publicar contenido nuevo. Hoy (5 nov 2026) el sitio y el PDF siguen en línea, pero no hay garantía de que sigan.</p>
+</div>
+<h3>Cada sábado (con wifi, ~30 min)</h3>
 <div class="card">
 <ul class="check" data-group="semanal">
-  <li><input type="checkbox" data-key="dl-1"><span><b>Una sola vez:</b> en Kiwix, los paquetes de VOA <i>Let's Learn English</i> (nivel 1) y <i>How to Pronounce</i>. Ya quedan en el celular para toda la fase.</span></li>
-  <li><input type="checkbox" data-key="dl-2"><span><b>Escucha para días libres:</b> 2 lecciones de ELLLO de tu nivel (audio + transcripción) o, desde la semana 5, 2 episodios Beginner de <i>Easy Stories in English</i> en AntennaPod.</span></li>
-  <li><input type="checkbox" data-key="dl-3"><span><b>Lectura:</b> 4 textos de ER-Central del nivel más bajo, guardados como PDF (en Chrome: ⋮ → Compartir → Imprimir → Guardar como PDF). Desde la semana 4, además, 2 lecciones de Breaking News English nivel 0 (PDF + MP3).</span></li>
-  <li><input type="checkbox" data-key="dl-4"><span><b>Anki en la laptop:</b> crea tus 35 tarjetas de la semana (5 por día) con frases de las lecciones de LLE; cada lección trae su lista de palabras. Sincroniza.</span></li>
-  <li><input type="checkbox" data-key="dl-5"><span><b>Gramática de la próxima semana:</b> si el tema está en British Council <i>LearnEnglish</i> (A1–A2), haz su ejercicio en línea como prueba previa. Las explicaciones y ejercicios de este plan ya funcionan sin internet.</span></li>
+  <li><input type="checkbox" data-key="dl-2"><span><b>Lectura:</b> 4 textos de ER-Central del nivel más bajo, guardados como PDF (en Chrome: ⋮ → Compartir → Imprimir → Guardar como PDF). Desde la semana 4, además, 2 lecciones de Breaking News English nivel 0 (PDF + MP3).</span></li>
+  <li><input type="checkbox" data-key="dl-3"><span><b>AntennaPod</b> (desde la semana 5): descarga 2 episodios <i>(Beginner)</i> nuevos de Easy Stories.</span></li>
+  <li><input type="checkbox" data-key="dl-4"><span><b>Anki:</b> sincroniza (botón de sincronizar arriba), para respaldar tu avance y tus frases.</span></li>
+  <li><input type="checkbox" data-key="dl-5"><span><b>Gramática de la próxima semana</b> (opcional): si el tema está en British Council <i>LearnEnglish</i> (A1–A2), haz su ejercicio en línea como prueba previa.</span></li>
   <li><input type="checkbox" data-key="dl-6"><span><b>Corrección:</b> manda 2–3 textos de tu libreta con el mensaje de corrección de la página principal y reescríbelos.</span></li>
-  <li><input type="checkbox" data-key="dl-7"><span><b>Resumen semanal:</b> mándame la plantilla del domingo de la página principal.</span></li>
+  <li><input type="checkbox" data-key="dl-7"><span><b>Resumen semanal:</b> mándame la plantilla de la página principal.</span></li>
 </ul>
-<div class="toolbar noprint"><button class="btn" type="button" id="resetWeek">Desmarcar la lista</button></div>
+<div class="toolbar noprint"><button class="btn" type="button" id="resetWeek">Desmarcar la lista del sábado</button></div>
+</div>
+
+<h2 id="anki">Anki: cómo usarlo (mazo Oxford 3000 + "Mis frases")</h2>
+<p>Usas <b>dos mazos</b>: el de Oxford 3000 que ya descargaste (palabras frecuentes, elegidas por otros) y uno tuyo, <b>Mis frases</b>, con frases de lo que estudias. El tuyo es importante porque las palabras aparecen en una frase que ya oíste y entendiste, y eso las hace más fáciles de recordar y de usar al hablar <span class="pill ev-c">Opinión</span>, apoyada en que aprender palabras en contexto y en dirección productiva ayuda a producirlas (Webb, 2009).</p>
+<div class="card">
+<p><b>1 · Configura (una vez)</b></p>
+<ol>
+  <li><b>Oxford 3000:</b> en la lista de mazos, toca los 3 puntos (o mantén presionado) junto al mazo → <i>Opciones</i> → <i>Límites diarios</i> → <i>Tarjetas nuevas/día</i> = <b>10</b>. (Los nombres pueden variar un poco según la versión.)</li>
+  <li><b>Revisa el orden:</b> abre el mazo y mira las primeras tarjetas nuevas. Si van en orden alfabético (<i>a, abandon, ability…</i>), se mezclan niveles fáciles y difíciles; dime el nombre del mazo y te digo cómo ordenarlo por nivel (A1 primero).</li>
+  <li><b>Crea el mazo "Mis frases":</b> botón <b>+</b> → <i>Crear mazo</i> → "Mis frases". En sus opciones: <i>Tarjetas nuevas/día</i> = <b>5</b>.</li>
+</ol>
+<p><b>2 · Cuándo agregas tus frases</b></p>
+<p>En los <b>días de turno</b>, en los últimos 5 min del bloque de escucha, justo después de trabajar la lección de <i>Let's Learn English</i>. Son 5 frases por lección nueva, 4 lecciones por semana: unas 20 frases por semana. Anki te muestra hasta 5 nuevas al día de este mazo, más las 10 del Oxford.</p>
+<p><b>3 · Qué frases eliges</b> (de la <i>Conversation</i> o las <i>Key Words</i> del PDF)</p>
+<ul>
+  <li>Que tengan algo que <b>no sabías</b> (una palabra o una forma de decir algo).</li>
+  <li>Que <b>tú dirías</b> en tu vida. <i>"Nice to meet you"</i> sí; un nombre de calle, no.</li>
+  <li><b>Frases completas o pedazos</b> (<i>"What do you do?"</i>, <i>"I'm new to D.C."</i>), no palabras sueltas. Las palabras sueltas ya te las da el Oxford.</li>
+  <li>Cortas: máximo ~8 palabras.</li>
+</ul>
+<p><b>4 · Cómo se crea cada tarjeta</b> (sin internet, en AnkiDroid)</p>
+<ol>
+  <li>Botón <b>+</b> → <i>Agregar</i>. Arriba elige <b>Tipo: "Básico (y tarjeta invertida)"</b> (<i>Basic (and reversed card)</i>) y <b>Mazo: Mis frases</b>.</li>
+  <li><b>Anverso:</b> la frase en inglés, con la palabra nueva en negritas. Ejemplo: <i>I have a pen in my <b>bag</b>.</i></li>
+  <li><b>Reverso:</b> el significado en español de la frase completa: <i>Tengo una pluma en mi bolsa.</i></li>
+  <li>Guardar. Por cada frase se crean 2 tarjetas: inglés → español (entender) y español → inglés (decirla). La segunda es la que ataca tu "no sé qué palabra decir".</li>
+</ol>
+<p><b>5 · Al repasar</b> (1:40, antes de dormir): <b>di la respuesta en voz alta antes de voltear</b>. Si no te salió, presiona <i>Otra vez</i> (<i>Again</i>) sin culpa. Si un día no puedes, haz solo los repasos y salta las nuevas.</p>
 </div>
 
 <h2 id="gramatica">Gramática: L1–L16</h2>
@@ -529,9 +568,9 @@ html = f"""<!DOCTYPE html>
   <li>Dewar et al. (2012), <a href="https://www.psychologicalscience.org/news/releases/boosting-new-memories-with-wakeful-resting.html">Brief wakeful resting boosts new memories over the long term</a> (resumen de APS)</li>
   <li>Tassi y Muzet (2000), <a href="https://www.em-consulte.com/article/588100/sleep-inertia">Sleep inertia</a>, Sleep Medicine Reviews · <a href="https://pubmed.ncbi.nlm.nih.gov/34969316/">Disturbance of the circadian system in shift work</a> (revisión)</li>
   <li>Brown y Hilferty (1986), RELC Journal 17(2): 59–70 · <a href="https://cambridge.org/core/services/aop-cambridge-core/content/view/555DB88EE394C8ABA480DBCD20FF408D/S0261444822000441a.pdf/jd-browns-essential-bookshelf-connected-speech.pdf">J.D. Brown, bibliografía sobre habla conectada</a></li>
-  <li>Recursos: <a href="https://learningenglish.voanews.com/a/lets-learn-english-level-1-lesson-50/5182991.html">VOA Let's Learn English</a> (52 lecciones en el nivel 1) · <a href="https://www.elllo.org/">ELLLO</a> · <a href="https://www.er-central.com/help/">ER-Central</a> · <a href="https://breakingnewsenglish.com/news_levels.html">Breaking News English</a> · <a href="https://learnenglish.britishcouncil.org/grammar/a1-a2-grammar">British Council: gramática A1–A2</a> · <a href="https://kiwix.org">Kiwix</a></li>
+  <li>Recursos: <a href="https://americanspaces.state.gov/wp-content/uploads/sites/292/LetsLearnEnglishLevel1.pdf">PDF del curso Let's Learn English – Level 1</a> (Departamento de Estado de EE. UU.) · <a href="https://library.kiwix.org">biblioteca de Kiwix</a> ("VOA Learning") · <a href="https://learningenglish.voanews.com/a/lets-learn-english-level-1-lesson-50/5182991.html">VOA Let's Learn English</a> (52 lecciones en el nivel 1) · <a href="https://www.elllo.org/">ELLLO</a> · <a href="https://www.er-central.com/help/">ER-Central</a> · <a href="https://breakingnewsenglish.com/news_levels.html">Breaking News English</a> · <a href="https://learnenglish.britishcouncil.org/grammar/a1-a2-grammar">British Council: gramática A1–A2</a> · <a href="https://kiwix.org">Kiwix</a></li>
 </ul>
-<footer><p>Fase 1 · v2.1 · 5 nov 2026 (horario del turno corregido; speaking en el turno). Se rehace después del examen de práctica de la semana 10.</p></footer>
+<footer><p>Fase 1 · v2.2 · 5 nov 2026 (descargas exactas y uso de Anki). Se rehace después del examen de práctica de la semana 10.</p></footer>
 </div>
 <script>
 (function(){{
